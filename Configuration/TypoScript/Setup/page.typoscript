@@ -1,0 +1,20 @@
+pageEasyshopCheckout = PAGE
+pageEasyshopCheckout {
+  typeNum = 20240828
+
+  config {
+    disableAllHeaderCode = 1
+    no_cache = 1
+    additionalHeaders.10.header = Content-type:application/json
+  }
+
+  10 = USER
+  10 {
+      userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+      extensionName = Easyshop
+      pluginName = Checkout
+      vendorName = Wacon
+
+      settings < plugin.tx_easyshop.settings
+  }
+}

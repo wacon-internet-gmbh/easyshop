@@ -19,6 +19,7 @@ namespace Wacon\Easyshop\Bootstrap;
 
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use Wacon\Easyshop\Controller\ProductController;
+use Wacon\Easyshop\Controller\ShopController;
 
 class ExtLocalconf extends Base
 {
@@ -39,6 +40,13 @@ class ExtLocalconf extends Base
             $this->getExtensionKeyAsNamespace(),
             'ListWithDetail',
             [ProductController::class => 'listwithdetail,detail'],
+            [],
+        );
+
+        ExtensionUtility::configurePlugin(
+            $this->getExtensionKeyAsNamespace(),
+            'Checkout',
+            [ShopController::class => 'checkout'],
             [],
         );
     }

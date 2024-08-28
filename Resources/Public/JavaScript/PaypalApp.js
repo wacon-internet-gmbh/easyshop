@@ -13,7 +13,7 @@ window.paypal
               "Content-Type": "application/json",
           },
           body: JSON.stringify({
-              cart: [productData]
+            cart: [productData]
           })
       });
 
