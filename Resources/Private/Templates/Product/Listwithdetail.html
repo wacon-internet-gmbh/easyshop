@@ -1,0 +1,11 @@
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <div class="row">
+        <f:for each="{products}" as="product" iteration="iterator">
+            <div class="col-md-4 mb-3 mb-md-0">
+                <f:render partial="List/Item" arguments="{product: product,settings:settings,iterator:iterator}" />
+            </div>
+        </f:for>
+    </div>
+</f:section>

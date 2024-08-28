@@ -13,6 +13,8 @@
  * The TYPO3 project - inspiring people to share!
  */
 
+$imageConfig = $GLOBALS['TCA']['tt_content']['columns']['image'];
+
 return [
     'ctrl' => [
         'title' => 'LLL:EXT:easyshop/Resources/Private/Language/locallang_db.xlf:tx_easyshop_domain_model_product',
@@ -113,9 +115,10 @@ return [
                 'type' => 'category',
             ],
         ],
+        'images' => $imageConfig
     ],
     'types' => [
-        '0' => ['showitem' => 'hidden,name,description,details,--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, --palette--;;hidden, --palette--;;access,--div--;LLL:EXT:easyshop/Resources/Private/Language/locallang_ttc.xlf:palette.prices,--palette--;;prices,--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories, categories']
+        '0' => ['showitem' => 'hidden,name,description,details,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.images, images,--div--;LLL:EXT:easyshop/Resources/Private/Language/locallang_ttc.xlf:palette.prices,--palette--;;prices,--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories, categories, --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access, --palette--;;hidden, --palette--;;access']
     ],
     'palettes' => [
         'hidden' => $GLOBALS['TCA']['tt_content']['palettes']['hidden'],

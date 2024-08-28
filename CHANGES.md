@@ -1,5 +1,7 @@
 ## Version 0.2.0
-- [WIP] Create frontend plugin for list view
+- [WIP] Create frontend plugin for detail view
+- [FEATURE] Create frontend plugin for list view
+- [FEATURE] Extbase Model and Repository for product
 - [NOTICE] Update runTests.sh to work with newer GitHub Action version
 
 ## Version 0.1.0

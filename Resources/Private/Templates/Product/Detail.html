@@ -1,0 +1,28 @@
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <article class="article articletype-product">
+        <div class="row">
+            <f:if condition="{product.images}">
+                <div class="col-image col">
+                    <f:render partial="Detail/Slider" arguments="{images: product.images}" />
+                </div>
+            </f:if>
+            <div class="col-text col">
+                <p class="article-category">{product.productCategory}</p>
+                <h1>{product.name}</h1>
+                <p class="article-price">
+                    <f:format.currency decimalSeparator="," thousandsSeparator="." decimals="2" currencySign="{product.currency}">{product.grossPrice}</f:format.currency>
+                    <br />
+                    <span class="article-vat-info small"><f:translate key="product.vat_info" extensionName="easyshop" /></span>
+                </p>
+                <div class="article-description">
+                    <f:format.html>{product.description}</f:format.html>
+                </div>
+                <div class="article-details">
+                    <f:format.html>{product.details}</f:format.html>
+                </div>
+            </div>
+        </div>
+    </article>
+</f:section>

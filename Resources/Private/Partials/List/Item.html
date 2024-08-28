@@ -1,0 +1,13 @@
+<article class="article articletype-product card h-100">
+    <f:if condition="{product.firstImage}">
+        <div class="card-img-top">
+            <f:link.action action="detail" pageUid="{settings.pages.detail}" arguments="{product: product}"><f:image class="img-fluid" image="{product.firstImage}" /></f:link.action>
+        </div>
+    </f:if>
+    <div class="card-body">
+        <h3 class="h2 card-title"><f:link.action action="detail" pageUid="{settings.pages.detail}" arguments="{product: product}">{product.name}</f:link.action></h3>
+        <div class="card-text">
+            <f:format.currency decimalSeparator="," thousandsSeparator="." decimals="2" currencySign="{product.currency}">{product.grossPrice}</f:format.currency>
+        </div>
+    </div>
+</article>

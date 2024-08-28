@@ -18,9 +18,16 @@ declare(strict_types=1);
 namespace Wacon\Easyshop\Controller;
 
 use Psr\Http\Message\ResponseInterface;
+use Wacon\Easyshop\Domain\Model\Product;
+use Wacon\Easyshop\Domain\Repository\ProductRepository;
 
 class ProductController extends BaseController
 {
+    public function __construct(
+        private readonly ProductRepository $productRepository
+    )
+    {}
+
     /**
      * Show list and detail view
      * @return ResponseInterface
@@ -32,14 +39,19 @@ class ProductController extends BaseController
             return $possibleRedirect;
         }
 
+        $this->view->assign('products', $this->productRepository->findAll());
+
         return $this->htmlResponse();
     }
     /**
      * Show detail view
+     * @param Product $product
      * @return ResponseInterface
      */
-    public function detailAction(): ResponseInterface
+    public function detailAction(Product $product): ResponseInterface
     {
+        $this->view->assign('product', $product);
+
         return $this->htmlResponse();
     }
 }

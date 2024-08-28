@@ -6,6 +6,12 @@
 			<trans-unit id="listwithdetail" resname="listwithdetail">
 				<source>List with Detail view</source>
 			</trans-unit>
+			<trans-unit id="listwithdetail.pi_flexform.sheetGeneral" resname="listwithdetail.pi_flexform.sheetGeneral">
+				<source>General</source>
+			</trans-unit>
+			<trans-unit id="listwithdetail.pi1_flexform.detailPageUid" resname="listwithdetail.pi1_flexform.detailPageUid">
+				<source>Detail page</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

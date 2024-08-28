@@ -32,7 +32,6 @@ class ExtLocalconf extends Base
 
     /**
      * Register new frontend plugins
-     * @return void
      */
     private function configurePlugins()
     {
