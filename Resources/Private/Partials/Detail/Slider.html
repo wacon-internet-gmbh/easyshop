@@ -1,0 +1,27 @@
+<div class="swiper article-detail-slider">
+    <div class="swiper-wrapper">
+        <f:for each="{images}" as="image" iteration="i">
+        <div class="swiper-slide">
+            <f:image image="{image}" class="img-fluid" fileExtension="webp" />
+        </div>
+    </f:for>
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
+<f:asset.css identifier="swiper" href="EXT:easyshop/Resources/Public/Contrib/node_modules/swiper/swiper-bundle.min.css" />
+<f:asset.css identifier="easyshop_article_slider" href="EXT:easyshop/Resources/Public/Css/article-slider.css" />
+<f:asset.script identifier="swiper" src="EXT:easyshop/Resources/Public/Contrib/node_modules/swiper/swiper-bundle.min.js" />
+<f:asset.script identifier="swiper_easyshop_article_slider">
+    <f:alias map="{'ocb': '{', 'ccb': '}'}">
+        document.addEventListener("DOMContentLoaded", (event) => {ocb}
+            const swiperEasyshopArticleSlider = new Swiper('.article-detail-slider', {ocb}
+                loop: true,
+                navigation: {ocb}
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                {ccb},
+                {ccb});
+        {ccb});
+    </f:alias>
+</f:asset.script>

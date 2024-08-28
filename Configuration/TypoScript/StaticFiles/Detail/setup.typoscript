@@ -1,0 +1,13 @@
+# Override content rendering if the news record is requested
+[request && traverse(request.getQueryParams(), 'tx_easyshop_listwithdetail/product') > 0]
+    lib.dynamicContent >
+    lib.dynamicContent = USER
+    lib.dynamicContent {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = Easyshop
+        pluginName = ListWithDetail
+        vendorName = Wacon
+
+        settings < plugin.tx_easyshop.settings
+    }
+[end]

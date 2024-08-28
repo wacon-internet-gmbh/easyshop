@@ -1,7 +1,7 @@
 <article class="article articletype-product card h-100">
     <f:if condition="{product.firstImage}">
         <div class="card-img-top">
-            <f:link.action action="detail" pageUid="{settings.pages.detail}" arguments="{product: product}"><f:image class="img-fluid" image="{product.firstImage}" /></f:link.action>
+            <f:link.action action="detail" pageUid="{settings.pages.detail}" arguments="{product: product}"><f:image class="img-fluid" image="{product.firstImage}" fileExtension="webp" /></f:link.action>
         </div>
     </f:if>
     <div class="card-body">

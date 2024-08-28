@@ -4,11 +4,11 @@
     <article class="article articletype-product">
         <div class="row">
             <f:if condition="{product.images}">
-                <div class="col-image col">
+                <div class="col-image col-lg-6">
                     <f:render partial="Detail/Slider" arguments="{images: product.images}" />
                 </div>
             </f:if>
-            <div class="col-text col">
+            <div class="col-text col{f:if(condition: product.images, then: '-lg-6')}">
                 <p class="article-category">{product.productCategory}</p>
                 <h1>{product.name}</h1>
                 <p class="article-price">
