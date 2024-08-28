@@ -1,3 +1,6 @@
+## Version 0.1.0
+- [FEATURE] Define product model in TCA
+
 ## Version 0.0.2
 - [NOTICE] Add Extension icon
 
