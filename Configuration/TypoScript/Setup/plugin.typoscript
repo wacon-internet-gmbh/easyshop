@@ -1,0 +1,13 @@
+plugin.tx_easyshop {
+  settings {
+    pageTypes {
+      checkout = 20240828
+    }
+    checkout {
+      paypal {
+        clientid =
+        sandboxMode = 1
+      }
+    }
+  }
+}

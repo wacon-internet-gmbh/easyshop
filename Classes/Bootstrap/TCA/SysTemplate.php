@@ -37,6 +37,12 @@ class SysTemplate extends Base
     {
         ExtensionManagementUtility::addStaticFile(
             $this->extensionKey,
+            'Configuration/TypoScript',
+            'Easyshop - Base'
+        );
+
+        ExtensionManagementUtility::addStaticFile(
+            $this->extensionKey,
             'Configuration/TypoScript/StaticFiles/Detail',
             'Easyshop - List and detail view'
         );

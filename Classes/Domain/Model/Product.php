@@ -321,4 +321,16 @@ class Product extends AbstractEntity
 
         return $this;
     }
+
+    /**
+     * Return the data for the paypal cart of this product
+     * @return string
+     */
+    public function getPaypalCartData(): string
+    {
+        return \json_encode([
+            'sku' => 'product-' . $this->getUid(),
+            'name' => $this->getName(),
+        ]);
+    }
 }

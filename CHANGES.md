@@ -1,3 +1,7 @@
+## Version 0.3.0
+- [WIP] Create paypal checkout server
+- [FEATURE] Create paypal checkout client
+
 ## Version 0.2.0
 - [FEATURE] Create frontend plugin for detail view
 - [FEATURE] Create frontend plugin for list view

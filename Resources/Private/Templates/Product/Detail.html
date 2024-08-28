@@ -16,6 +16,9 @@
                     <br />
                     <span class="article-vat-info small"><f:translate key="product.vat_info" extensionName="easyshop" /></span>
                 </p>
+                <div class="article-checkout">
+                    <f:render partial="Checkout/Paypal" arguments="{product: product, settings: settings, checkouturl: checkouturl}" />
+                </div>
                 <div class="article-description">
                     <f:format.html>{product.description}</f:format.html>
                 </div>

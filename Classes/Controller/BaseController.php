@@ -23,6 +23,19 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class BaseController extends ActionController
 {
     /**
+     * Create the checkout url
+     * @return string
+     */
+    protected function createCheckoutUrl(): string
+    {
+        return $this->uriBuilder
+            ->reset()
+            ->setCreateAbsoluteUri(true)
+            ->setTargetPageType((int)$this->settings['pageTypes']['checkout'])
+            ->build();
+    }
+
+    /**
      * When list action is called along with a product argument, we forward to detail action.
      */
     protected function forwardToDetailActionWhenRequested(): ?ForwardResponse
