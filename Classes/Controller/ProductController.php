@@ -25,8 +25,7 @@ class ProductController extends BaseController
 {
     public function __construct(
         private readonly ProductRepository $productRepository
-    )
-    {}
+    ) {}
 
     /**
      * Show list and detail view
