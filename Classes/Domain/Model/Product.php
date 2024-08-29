@@ -329,7 +329,7 @@ class Product extends AbstractEntity
     public function getPaypalCartData(): string
     {
         return \json_encode([
-            'id' => $this->getUid()
+            'id' => $this->getUid(),
         ]);
     }
 }

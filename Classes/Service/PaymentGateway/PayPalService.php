@@ -55,12 +55,12 @@ class PayPalService
             'environment' => $this->settings['environment'],
             'merchantId' => $this->settings['merchantId'],
             'publicKey' => $this->settings['publicKey'],
-            'privateKey' => $this->settings['privateKey']
+            'privateKey' => $this->settings['privateKey'],
         ]);
 
         // pass $clientToken to your front-end
         $this->clientToken = $this->gateway->clientToken()->generate([
-            "customerId" => $this->settings['customerId']
+            "customerId" => $this->settings['customerId'],
         ]);
     }
 }

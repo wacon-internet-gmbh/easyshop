@@ -38,11 +38,11 @@ class ShopController extends BaseController
 
         try {
             $paypalService->authorize();
-        }catch(\InvalidArgumentException $e) {
+        } catch(\InvalidArgumentException $e) {
             $response = [
                 'status' => 'error',
                 'message' => $e->getMessage(),
-                'code' => $e->getCode()
+                'code' => $e->getCode(),
             ];
         }
 
