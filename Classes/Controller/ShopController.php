@@ -19,6 +19,7 @@ namespace Wacon\Easyshop\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use Wacon\Easyshop\Domain\Repository\ProductRepository;
+use Wacon\Easyshop\Service\PaymentGateway\PayPalService;
 
 class ShopController extends BaseController
 {
@@ -33,6 +34,17 @@ class ShopController extends BaseController
     public function checkoutAction(): ResponseInterface
     {
         $response = [];
+        $paypalService = GeneralUtility::makeInstance(PayPalService::class, $this->settings['checkout']['paypal']);
+
+        try {
+            $paypalService->authorize();
+        }catch(\InvalidArgumentException $e) {
+            $response = [
+                'status' => 'error',
+                'message' => $e->getMessage(),
+                'code' => $e->getCode()
+            ];
+        }
 
         $this->view->assign('response', $response);
         return $this->jsonResponse();

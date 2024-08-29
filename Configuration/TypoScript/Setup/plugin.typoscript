@@ -6,7 +6,11 @@ plugin.tx_easyshop {
     checkout {
       paypal {
         clientid =
-        sandboxMode = 1
+        environment = sandbox
+        merchantId =
+        publicKey =
+        privateKey =
+        customerId =
       }
     }
   }

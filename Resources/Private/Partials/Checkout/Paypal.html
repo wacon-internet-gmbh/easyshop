@@ -1,4 +1,4 @@
 <div id="paypal-button-container" data-product="{product.paypalCartData}" data-checkout="{checkouturl}"></div>
 <p id="result-message"></p>
-<f:asset.script identifier="paypal_checkout" src="https://{f:if(condition: settings.checkout.paypal.sandboxMode, then: 'sandbox', else: 'www')}.paypal.com/sdk/js?client-id={settings.checkout.paypal.clientid}&currency={product.currency}" data="{page-type: 'product-details'}"/>
+<f:asset.script identifier="paypal_checkout" src="https://{f:if(condition: settings.checkout.paypal.environment, then: 'sandbox', else: 'www')}.paypal.com/sdk/js?client-id={settings.checkout.paypal.clientid}&currency={product.currency}" data="{page-type: 'product-details'}"/>
 <f:asset.script identifier="paypal_checkout_app" src="EXT:easyshop/Resources/Public/JavaScript/PaypalApp.js" />
