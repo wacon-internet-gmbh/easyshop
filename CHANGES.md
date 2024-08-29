@@ -1,5 +1,7 @@
 ## Version 0.3.0
-- [WIP] Create paypal checkout server
+- [WIP] Add Articlename and uid into paypal payment
+- [WIP] Create after purchase screen
+- [FEATURE] Create paypal checkout server
 - [FEATURE] Create paypal checkout client
 
 ## Version 0.2.0

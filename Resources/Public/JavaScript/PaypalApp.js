@@ -7,13 +7,15 @@ window.paypal
       let productData = JSON.parse(document.getElementById('paypal-button-container').getAttribute('data-product'));
       productData.amount = 1;
       let checkoutUrl = document.getElementById('paypal-button-container').getAttribute('data-checkout');
+
       const response = await fetch(checkoutUrl, {
           method: "POST",
           headers: {
+              "Accept": "application/json",
               "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            cart: [productData]
+            tx_easyshop_checkout: {cart: [productData]}
           })
       });
 

@@ -47,4 +47,18 @@ class BaseController extends ActionController
         $forwardResponse = new ForwardResponse('detail');
         return $forwardResponse->withArguments(['product' => $this->request->getArgument('product')]);
     }
+
+    /**
+     * Fetch the post data from request body
+     * triggered by ES6 fetch method
+     * @return array
+     */
+    protected function getCartFromPostViaJSON(): array
+    {
+        $body = $this->request->getBody()->getContents();
+        $body = $body ? \json_decode($body, true) : [];
+        $body = array_key_exists('tx_easyshop_checkout', $body) ? $body['tx_easyshop_checkout'] : [];
+
+        return $body;
+    }
 }

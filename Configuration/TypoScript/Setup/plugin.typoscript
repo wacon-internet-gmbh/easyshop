@@ -1,5 +1,8 @@
 plugin.tx_easyshop {
   settings {
+    brand {
+      name = Easyshop
+    }
     pageTypes {
       checkout = 20240828
     }
@@ -7,10 +10,7 @@ plugin.tx_easyshop {
       paypal {
         clientid =
         environment = sandbox
-        merchantId =
-        publicKey =
-        privateKey =
-        customerId =
+        secret =
       }
     }
   }

@@ -18,7 +18,10 @@ declare(strict_types=1);
 namespace Wacon\Easyshop\Controller;
 
 use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wacon\Easyshop\Domain\Repository\ProductRepository;
+use Wacon\Easyshop\Exception\PayPalAuthException;
+use Wacon\Easyshop\Exception\ProductNotFoundException;
 use Wacon\Easyshop\Service\PaymentGateway\PayPalService;
 
 class ShopController extends BaseController
@@ -34,11 +37,55 @@ class ShopController extends BaseController
     public function checkoutAction(): ResponseInterface
     {
         $response = [];
-        $paypalService = GeneralUtility::makeInstance(PayPalService::class, $this->settings['checkout']['paypal']);
+        $paypalService = GeneralUtility::makeInstance(PayPalService::class);
+        $arguments = $this->getCartFromPostViaJSON();
 
         try {
-            $paypalService->authorize();
-        } catch(\InvalidArgumentException $e) {
+            if (!is_array($arguments) || !array_key_exists('cart', $arguments)) {
+                $response = [
+                    'status' => 'error',
+                    'code' => -1,
+                    'message' => 'Cart is empty',
+                ];
+            }else {
+                if (!$paypalService->authorize($this->settings['checkout']['paypal'])) {
+                    throw new PayPalAuthException();
+                }
+
+                $productData = current($arguments['cart']);
+                $product = $this->productRepository->findByUid($productData['id']);
+
+                if (!$product) {
+                    throw new ProductNotFoundException('Product with id: ' . $productData['id'] . ' could not be found.', time());
+                }
+
+                $orderDetails = [
+                    'locale' => $this->request->getAttribute('language')->getLocale()->getName(),
+                    'brand' => [
+                        'name' => $this->settings['brand']['name']
+                    ],
+                    'product' => [
+                        'reference_id' => $product->getUid(),
+                        'amount' => [
+                            'currency_code' => $product->getCurrency(),
+                            'value' => $product->getGrossPrice(),
+                        ]
+                    ]
+                ];
+
+                $transaction = $paypalService->createOrder($orderDetails);
+
+                // Handle the transaction result
+                if ($transaction) {
+                    $response = [
+                        'status' => $transaction['status'],
+                        'id' => $transaction['id'],
+                    ];
+                } else {
+                    $response = $transaction;
+                }
+            }
+        } catch(\Exception $e) {
             $response = [
                 'status' => 'error',
                 'message' => $e->getMessage(),
@@ -46,7 +93,7 @@ class ShopController extends BaseController
             ];
         }
 
-        $this->view->assign('response', $response);
+        $this->view->assign('response', \json_encode($response));
         return $this->jsonResponse();
     }
 }
