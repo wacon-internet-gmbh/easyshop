@@ -46,7 +46,6 @@ class PayPalService
 
     /**
      * Authorize into paypal
-     * @return void
      * @throws \InvalidArgumentException
      */
     public function authorize()
