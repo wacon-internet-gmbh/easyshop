@@ -60,7 +60,7 @@ class PayPalService
 
         // pass $clientToken to your front-end
         $this->clientToken = $this->gateway->clientToken()->generate([
-            "customerId" => $this->settings['customerId'],
+            'customerId' => $this->settings['customerId'],
         ]);
     }
 }
