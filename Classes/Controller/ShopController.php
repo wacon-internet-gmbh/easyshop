@@ -62,15 +62,40 @@ class ShopController extends BaseController
                 $orderDetails = [
                     'locale' => $this->request->getAttribute('language')->getLocale()->getName(),
                     'brand' => [
-                        'name' => $this->settings['brand']['name']
+                        'name' => $this->settings['brand']['name'],
                     ],
                     'product' => [
                         'reference_id' => $product->getUid(),
                         'amount' => [
                             'currency_code' => $product->getCurrency(),
                             'value' => $product->getGrossPrice(),
-                        ]
-                    ]
+                            'breakdown' => [
+                                'item_total' => [
+                                    'currency_code' => $product->getCurrency(),
+                                    'value' => $product->getNetPrice(),
+                                ],
+                                'tax_total' => [
+                                    'currency_code' => $product->getCurrency(),
+                                    'value' => $product->getVatInCurrency() ,
+                                ],
+                            ],
+                        ],
+                        'items' => [
+                            [
+                                'name' => $product->getName(),
+                                'quantity' => 1,
+                                'sku' => $product->getUid(),
+                                'unit_amount' => [
+                                    'currency_code' => $product->getCurrency(),
+                                    'value' => $product->getNetPrice(),
+                                ],
+                                'tax' => [
+                                    'currency_code' => $product->getCurrency(),
+                                    'value' => $product->getVatInCurrency(),
+                                ],
+                            ],
+                        ],
+                    ],
                 ];
 
                 $transaction = $paypalService->createOrder($orderDetails);

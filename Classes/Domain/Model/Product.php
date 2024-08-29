@@ -247,6 +247,16 @@ class Product extends AbstractEntity
     }
 
     /**
+     * Get vAT
+     *
+     * @return  float
+     */
+    public function getVatInCurrency()
+    {
+        return \round(($this->vat * $this->netPrice) / 100, 2);
+    }
+
+    /**
      * Set vAT
      *
      * @param  float  $vat  VAT
