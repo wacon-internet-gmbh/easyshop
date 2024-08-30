@@ -12,7 +12,7 @@ pageEasyshopCheckout {
   10 {
       userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
       extensionName = Easyshop
-      pluginName = Checkout
+      pluginName = Order
       vendorName = Wacon
 
       settings < plugin.tx_easyshop.settings

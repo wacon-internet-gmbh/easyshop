@@ -49,5 +49,12 @@ class ExtLocalconf extends Base
             [ShopController::class => 'checkout'],
             [],
         );
+
+        ExtensionUtility::configurePlugin(
+            $this->getExtensionKeyAsNamespace(),
+            'Order',
+            [ShopController::class => 'order'],
+            [],
+        );
     }
 }

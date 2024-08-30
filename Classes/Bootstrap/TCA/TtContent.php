@@ -48,5 +48,11 @@ class TtContent extends Base
             $pluginSignature,
             $this->getFlexformPath('ListWithDetail.xml'),
         );
+
+        $pluginSignature = ExtensionUtility::registerPlugin(
+            $this->getExtensionKeyAsNamespace(),
+            'Checkout',
+            $this->getLLL('locallang_plugins.xlf:checkout'),
+        );
     }
 }

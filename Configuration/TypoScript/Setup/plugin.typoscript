@@ -4,14 +4,17 @@ plugin.tx_easyshop {
       name = Easyshop
     }
     pageTypes {
-      checkout = 20240828
+      order = 20240828
     }
-    checkout {
+    gateways {
       paypal {
         clientid =
         environment = sandbox
         secret =
       }
+    }
+    pages {
+      checkout =
     }
   }
 }

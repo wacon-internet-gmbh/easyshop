@@ -31,10 +31,20 @@ class ShopController extends BaseController
     ) {}
 
     /**
+     * Action when paypal payment is done or aborted
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function checkoutAction(): ResponseInterface
+    {
+        $this->view->assign('status', $this->request->getArgument('mode'));
+        return $this->htmlResponse();
+    }
+
+    /**
      * Show list and detail view
      * @return ResponseInterface
      */
-    public function checkoutAction(): ResponseInterface
+    public function orderAction(): ResponseInterface
     {
         $response = [];
         $paypalService = GeneralUtility::makeInstance(PayPalService::class);
@@ -48,7 +58,7 @@ class ShopController extends BaseController
                     'message' => 'Cart is empty',
                 ];
             }else {
-                if (!$paypalService->authorize($this->settings['checkout']['paypal'])) {
+                if (!$paypalService->authorize($this->settings['gateways']['paypal'])) {
                     throw new PayPalAuthException();
                 }
 
@@ -65,7 +75,7 @@ class ShopController extends BaseController
                         'name' => $this->settings['brand']['name'],
                     ],
                     'product' => [
-                        'reference_id' => $product->getUid(),
+                        'reference_id' => $product->getUid() . '-' . time(),
                         'amount' => [
                             'currency_code' => $product->getCurrency(),
                             'value' => $product->getGrossPrice(),

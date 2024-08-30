@@ -1,1 +1,12 @@
-<f:format.raw>{response}</f:format.raw>
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <f:switch expression="{status}">
+        <f:case value="return">
+            <p class="text-success fw-bold"><f:translate key="shop.checkout.success" extensionName="easyshop" /></p>
+        </f:case>
+        <f:defaultCase>
+            <p class="text-danger fw-bold"><f:translate key="shop.checkout.error" extensionName="easyshop" /></p>
+        </f:defaultCase>
+    </f:switch>
+</f:section>

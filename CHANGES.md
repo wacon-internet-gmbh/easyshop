@@ -1,3 +1,6 @@
+## Version 0.4.0
+- [FEATURE] Create after purchase screen
+
 ## Version 0.3.0
 - [FEATURE] Add Articlename and uid into paypal payment
 - [WIP] Create after purchase screen

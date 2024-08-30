@@ -50,7 +50,9 @@ class ProductController extends BaseController
     public function detailAction(Product $product): ResponseInterface
     {
         $this->view->assign('product', $product);
-        $this->view->assign('checkouturl', $this->createCheckoutUrl());
+        $this->view->assign('orderurl', $this->createOrderUrl());
+        $this->view->assign('successurl', $this->createCheckoutUrl(['tx_easyshop_checkout' => ['mode' => 'return']]));
+        $this->view->assign('errorurl', $this->createCheckoutUrl(['tx_easyshop_checkout' => ['mode' => 'error']]));
 
         return $this->htmlResponse();
     }

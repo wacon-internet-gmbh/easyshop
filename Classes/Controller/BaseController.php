@@ -24,14 +24,33 @@ class BaseController extends ActionController
 {
     /**
      * Create the checkout url
+     * @param array $arguments
      * @return string
      */
-    protected function createCheckoutUrl(): string
+    protected function createCheckoutUrl(array $arguments = []): string
+    {
+        $this->uriBuilder
+            ->reset()
+            ->setCreateAbsoluteUri(true)
+            ->setTargetPageUid((int)$this->settings['pages']['checkout']);
+
+        if (!empty($arguments)) {
+            $this->uriBuilder->setArguments($arguments);
+        }
+
+        return $this->uriBuilder->build();
+    }
+
+    /**
+     * Create the checkout url
+     * @return string
+     */
+    protected function createOrderUrl(): string
     {
         return $this->uriBuilder
             ->reset()
             ->setCreateAbsoluteUri(true)
-            ->setTargetPageType((int)$this->settings['pageTypes']['checkout'])
+            ->setTargetPageType((int)$this->settings['pageTypes']['order'])
             ->build();
     }
 
@@ -57,7 +76,7 @@ class BaseController extends ActionController
     {
         $body = $this->request->getBody()->getContents();
         $body = $body ? \json_decode($body, true) : [];
-        $body = array_key_exists('tx_easyshop_checkout', $body) ? $body['tx_easyshop_checkout'] : [];
+        $body = array_key_exists('tx_easyshop_order', $body) ? $body['tx_easyshop_order'] : [];
 
         return $body;
     }

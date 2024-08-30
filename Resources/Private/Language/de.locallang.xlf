@@ -6,6 +6,12 @@
 			<trans-unit id="product.vat_info" resname="product.vat_info">
 				<target>inkl. MwSt.</target>
 			</trans-unit>
+			<trans-unit id="shop.checkout.success" resname="shop.checkout.success">
+				<target>Vielen Dank für Ihre Bestellung. Wir werden Ihre Bestellung so schnell wie möglich bearbeiten und Sie informieren, sobald wir die Ware verschickt haben.</target>
+			</trans-unit>
+			<trans-unit id="shop.checkout.error" resname="shop.checkout.error">
+				<target>Bei der Zahlungsabwicklung ist ein Fehler aufgetreten. Bitte nehmen Sie Kontakt mit uns auf.</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

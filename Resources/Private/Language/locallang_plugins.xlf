@@ -12,6 +12,10 @@
 			<trans-unit id="listwithdetail.pi1_flexform.detailPageUid" resname="listwithdetail.pi1_flexform.detailPageUid">
 				<source>Detail page</source>
 			</trans-unit>
+
+			<trans-unit id="checkout" resname="checkout">
+				<source>Checkout</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

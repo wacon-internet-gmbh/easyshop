@@ -6,6 +6,13 @@
 			<trans-unit id="product.vat_info" resname="product.vat_info">
 				<source>incl. VAT</source>
 			</trans-unit>
+
+			<trans-unit id="shop.checkout.success" resname="shop.checkout.success">
+				<source>Thank you for your order. We will process your order as quickly as possible and inform you as soon as we have dispatched the goods.</source>
+			</trans-unit>
+			<trans-unit id="shop.checkout.error" resname="shop.checkout.error">
+				<source>An error occured during the payment process. Please contact us.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

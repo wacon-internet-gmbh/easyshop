@@ -1,0 +1,4 @@
+<div id="paypal-button-container" data-product="{product.paypalCartData}" data-order="{orderurl}" data-success="{successurl}" data-error="{errorurl}"></div>
+<p id="result-message"></p>
+<f:asset.script identifier="paypal_checkout" src="https://{f:if(condition: settings.gateways.paypal.environment, then: 'sandbox', else: 'www')}.paypal.com/sdk/js?client-id={settings.gateways.paypal.clientid}&currency={product.currency}" data="{page-type: 'product-details'}"/>
+<f:asset.script identifier="paypal_checkout_app" src="EXT:easyshop/Resources/Public/JavaScript/PaypalApp.js" />

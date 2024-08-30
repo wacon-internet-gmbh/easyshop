@@ -119,6 +119,14 @@ class PayPalService
             ]
         ];
 
+        if (array_key_exists('return_url', $orderDetails)) {
+            $data['payment_source']['paypal']['return_url'] = $orderDetails['return_url'];
+        }
+
+        if (array_key_exists('cancel_url', $orderDetails)) {
+            $data['payment_source']['paypal']['cancel_url'] = $orderDetails['cancel_url'];
+        }
+
         try {
             $response = $this->requestFactory->request(
                 $endpoint . '/v2/checkout/orders',
