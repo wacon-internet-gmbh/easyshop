@@ -57,7 +57,7 @@ class ShopController extends BaseController
                     'code' => -1,
                     'message' => 'Cart is empty',
                 ];
-            }else {
+            } else {
                 if (!$paypalService->authorize($this->settings['gateways']['paypal'])) {
                     throw new PayPalAuthException();
                 }

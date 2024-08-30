@@ -17,8 +17,8 @@ declare(strict_types=1);
 
 namespace Wacon\Easyshop\Service\PaymentGateway;
 
-use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\RequestOptions;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Http\RequestFactory;
 
@@ -58,14 +58,15 @@ class PayPalService
             'POST',
             [
                 'auth' => [
-                    $username, $password
+                    $username,
+                    $password,
                 ],
                 'headers' => [
                     'Content-Type' => 'application/x-www-form-urlencoded',
                 ],
                 'form_params' => [
                     'grant_type' => 'client_credentials',
-                ]
+                ],
             ]
         );
 
@@ -81,10 +82,9 @@ class PayPalService
             );
         }
 
-
         try {
             $this->accessToken = \json_decode($response->getBody()->getContents(), true, JSON_THROW_ON_ERROR);
-        }catch(\Exception $e) {
+        } catch(\Exception $e) {
             throw new \RuntimeException('The service returned an unexpected format.', 1666413230);
         }
 
@@ -104,7 +104,7 @@ class PayPalService
         $data = [
             'intent' => 'CAPTURE',
             'purchase_units' => [
-                $orderDetails['product']
+                $orderDetails['product'],
             ],
             'payment_source' => [
                 'paypal' => [
@@ -113,10 +113,10 @@ class PayPalService
                         'brand_name' => $orderDetails['brand']['name'],
                         'locale' => $orderDetails['locale'],
                         'landing_page' => 'LOGIN',
-                        'user_action' => 'PAY_NOW'
-                    ]
-                ]
-            ]
+                        'user_action' => 'PAY_NOW',
+                    ],
+                ],
+            ],
         ];
 
         if (array_key_exists('return_url', $orderDetails)) {
@@ -135,12 +135,12 @@ class PayPalService
                     'headers' => [
                         'Accept' => 'application/json',
                         'Content-Type' => 'application/json',
-                        'Authorization' => 'bearer ' . $this->accessToken['access_token']
+                        'Authorization' => 'bearer ' . $this->accessToken['access_token'],
                     ],
-                    RequestOptions::JSON => $data
+                    RequestOptions::JSON => $data,
                 ]
             );
-        }catch(ClientException $e) {
+        } catch(ClientException $e) {
             throw new ClientException($e->getResponse()->getBody()->getContents(), $e->getRequest(), $e->getResponse(), $e);
         }
 
@@ -156,10 +156,9 @@ class PayPalService
             );
         }
 
-
         try {
             $result = \json_decode($response->getBody()->getContents(), true, JSON_THROW_ON_ERROR);
-        }catch(\Exception $e) {
+        } catch(\Exception $e) {
             throw new \RuntimeException('The service returned an unexpected format.', 1666413230);
         }
 
