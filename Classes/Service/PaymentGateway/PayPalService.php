@@ -84,7 +84,7 @@ class PayPalService
 
         try {
             $this->accessToken = \json_decode($response->getBody()->getContents(), true, JSON_THROW_ON_ERROR);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('The service returned an unexpected format.', 1666413230);
         }
 
@@ -140,7 +140,7 @@ class PayPalService
                     RequestOptions::JSON => $data,
                 ]
             );
-        } catch(ClientException $e) {
+        } catch (ClientException $e) {
             throw new ClientException($e->getResponse()->getBody()->getContents(), $e->getRequest(), $e->getResponse(), $e);
         }
 
@@ -158,7 +158,7 @@ class PayPalService
 
         try {
             $result = \json_decode($response->getBody()->getContents(), true, JSON_THROW_ON_ERROR);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             throw new \RuntimeException('The service returned an unexpected format.', 1666413230);
         }
 

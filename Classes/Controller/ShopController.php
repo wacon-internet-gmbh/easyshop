@@ -120,7 +120,7 @@ class ShopController extends BaseController
                     $response = $transaction;
                 }
             }
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             $response = [
                 'status' => 'error',
                 'message' => $e->getMessage(),

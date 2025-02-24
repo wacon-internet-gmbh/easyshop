@@ -1,3 +1,6 @@
+## Version 1.0.0
+- [BUGFIX] CGL Fixes
+
 ## Version dev-1.0.0-0
 - [NOTICE] Add TYPO3 13 version support to make installable
 
