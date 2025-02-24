@@ -1,3 +1,6 @@
+## Version dev-1.0.0-0
+- [NOTICE] Add TYPO3 13 version support to make installable
+
 ## Version 0.4.0
 - [FEATURE] Create after purchase screen
 
