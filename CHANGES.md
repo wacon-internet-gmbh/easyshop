@@ -1,3 +1,8 @@
+## Version 1.1.0
+- [CHANGE] Hide all buttons except paypal
+- [NOTICE] Define view folder in TypoScript constants
+- [BUGFIX] Wrong property name when paypal authorize
+
 ## Version 1.0.0
 - [BUGFIX] CGL Fixes
 

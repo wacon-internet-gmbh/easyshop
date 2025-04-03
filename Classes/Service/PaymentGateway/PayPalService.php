@@ -32,9 +32,9 @@ class PayPalService
 
     /**
      * Client token of current session
-     * @var string
+     * @var array
      */
-    private string $clientToken;
+    private array $clientToken;
 
     public function __construct(
         protected RequestFactory $requestFactory,
@@ -83,12 +83,13 @@ class PayPalService
         }
 
         try {
-            $this->accessToken = \json_decode($response->getBody()->getContents(), true, JSON_THROW_ON_ERROR);
+            $bodyContent = $response->getBody()->getContents();
+            $this->clientToken = \json_decode($bodyContent, true);
         } catch (\Exception $e) {
             throw new \RuntimeException('The service returned an unexpected format.', 1666413230);
         }
 
-        return !empty($this->accessToken) && is_array($this->accessToken);
+        return !empty($this->clientToken) && is_array($this->clientToken) && \array_key_exists('access_token', $this->clientToken) && !empty($this->clientToken['access_token']);
     }
 
     /**
@@ -135,7 +136,7 @@ class PayPalService
                     'headers' => [
                         'Accept' => 'application/json',
                         'Content-Type' => 'application/json',
-                        'Authorization' => 'bearer ' . $this->accessToken['access_token'],
+                        'Authorization' => 'bearer ' . $this->clientToken['access_token'],
                     ],
                     RequestOptions::JSON => $data,
                 ]

@@ -1,0 +1,7 @@
+plugin.tx_easyshop {
+    view {
+        templateRootPath = EXT:easyshop/Resources/Private/Templates/
+        partialRootPath = EXT:easyshop/Resources/Private/Partials/
+        layoutRootPath = EXT:easyshop/Resources/Private/Layouts/
+    }
+}
