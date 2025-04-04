@@ -1,0 +1,8 @@
+config {
+  pageTitleProviders {
+    sitepackage {
+      provider = Wacon\Easyshop\PageTitle\ProductPageTitleProvider
+      before = record
+    }
+  }
+}

@@ -31,6 +31,7 @@ return [
         'typeicon_classes' => [
             'default' => 'tx_easyshop_domain_model_product',
         ],
+        'searchFields' => 'name,description,details',
     ],
     'columns' => [
         'name' => [

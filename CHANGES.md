@@ -1,3 +1,7 @@
+## Version 1.2.0
+- [FEATURE] Add PageTitleProvider for product detail
+- [NOTICE] Add searchfields for tx_easyshop_domain_model_product
+
 ## Version 1.1.0
 - [CHANGE] Hide all buttons except paypal
 - [NOTICE] Define view folder in TypoScript constants

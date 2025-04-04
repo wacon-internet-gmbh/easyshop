@@ -20,11 +20,13 @@ namespace Wacon\Easyshop\Controller;
 use Psr\Http\Message\ResponseInterface;
 use Wacon\Easyshop\Domain\Model\Product;
 use Wacon\Easyshop\Domain\Repository\ProductRepository;
+use Wacon\Easyshop\PageTitle\ProductPageTitleProvider;
 
 class ProductController extends BaseController
 {
     public function __construct(
-        private readonly ProductRepository $productRepository
+        private readonly ProductRepository $productRepository,
+        private readonly ProductPageTitleProvider $pageTitleProvider,
     ) {}
 
     /**
@@ -49,6 +51,8 @@ class ProductController extends BaseController
      */
     public function detailAction(Product $product): ResponseInterface
     {
+        $this->pageTitleProvider->setTitle($product);
+
         $this->view->assign('product', $product);
         $this->view->assign('orderurl', $this->createOrderUrl());
         $this->view->assign('successurl', $this->createCheckoutUrl(['tx_easyshop_checkout' => ['mode' => 'return']]));

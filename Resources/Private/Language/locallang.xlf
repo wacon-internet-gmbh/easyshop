@@ -13,6 +13,10 @@
 			<trans-unit id="shop.checkout.error" resname="shop.checkout.error">
 				<source>An error occured during the payment process. Please contact us.</source>
 			</trans-unit>
+
+			<trans-unit id="pagetitle.product" resname="pagetitle.product">
+				<source>Our bag: %s</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
