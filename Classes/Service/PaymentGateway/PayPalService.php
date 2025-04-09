@@ -24,7 +24,7 @@ use TYPO3\CMS\Core\Http\RequestFactory;
 
 class PayPalService
 {
-    const ORDER_STATUS_COMPLETED = 'COMPLETED';
+    public const ORDER_STATUS_COMPLETED = 'COMPLETED';
 
     /**
      * Settings

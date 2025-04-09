@@ -25,27 +25,27 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
      */
     protected int $sorting = 0;
 
-	/**
-	 * Get sorting
-	 *
-	 * @return int
-	 */
-	public function getSorting(): int
-	{
-		return $this->sorting;
-	}
+    /**
+     * Get sorting
+     *
+     * @return int
+     */
+    public function getSorting(): int
+    {
+        return $this->sorting;
+    }
 
-	/**
-	 * Set sorting
-	 *
-	 * @param int  $sorting
-	 *
-	 * @return self
-	 */
-	public function setSorting(int $sorting): self
-	{
-		$this->sorting = $sorting;
+    /**
+     * Set sorting
+     *
+     * @param int  $sorting
+     *
+     * @return self
+     */
+    public function setSorting(int $sorting): self
+    {
+        $this->sorting = $sorting;
 
-		return $this;
-	}
+        return $this;
+    }
 }
