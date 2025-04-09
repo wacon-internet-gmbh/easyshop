@@ -187,7 +187,7 @@ class PayPalService
                         'Accept' => 'application/json',
                         'Content-Type' => 'application/json',
                         'Authorization' => 'bearer ' . $this->clientToken['access_token'],
-                    ]
+                    ],
                 ]
             );
         } catch (ClientException $e) {
