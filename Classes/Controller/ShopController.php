@@ -62,7 +62,7 @@ class ShopController extends BaseController
         $sendMailToAdminService->send($orderDetails);
 
         // Delete session
-        // FrontendSessionUtility::removeSessionData($this->request, self::class . '->orderAction');
+        FrontendSessionUtility::removeSessionData($this->request, self::class . '->orderAction');
 
         $this->view->assign('status', $orderDetails['status']);
         return $this->htmlResponse();
