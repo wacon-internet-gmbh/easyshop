@@ -1,0 +1,18 @@
+categories:
+  Easyshop:
+    label: 'Easyshop'
+  Easyshop.emails:
+    label: 'Emails'
+    parent: Easyshop
+
+settings:
+  Easyshop.emails.orderContact:
+    label: 'Email receiver for contact email of order mails'
+    category: Easyshop.emails
+    type: string
+    default: 'contact@localhost'
+  Easyshop.emails.orderConfirmation:
+    label: 'Email receiver for order confirmations'
+    category: Easyshop.emails
+    type: string
+    default: 'confirmation@localhost'

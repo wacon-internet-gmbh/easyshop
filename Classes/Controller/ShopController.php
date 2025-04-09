@@ -20,9 +20,12 @@ namespace Wacon\Easyshop\Controller;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wacon\Easyshop\Domain\Repository\ProductRepository;
+use Wacon\Easyshop\Domain\Service\SendMailToAdminService;
+use Wacon\Easyshop\Domain\Service\SendMailToUserService;
 use Wacon\Easyshop\Exception\PayPalAuthException;
 use Wacon\Easyshop\Exception\ProductNotFoundException;
 use Wacon\Easyshop\Service\PaymentGateway\PayPalService;
+use Wacon\Easyshop\Utility\FrontendSessionUtility;
 
 class ShopController extends BaseController
 {
@@ -33,16 +36,42 @@ class ShopController extends BaseController
     /**
      * Action when paypal payment is done or aborted
      * @return \Psr\Http\Message\ResponseInterface
+     * @throws PayPalAuthException
      */
     public function checkoutAction(): ResponseInterface
     {
-        $this->view->assign('status', $this->request->getArgument('mode'));
+        $mode = $this->request->getArgument('mode');
+        $transaction = FrontendSessionUtility::getSessionData($this->request, self::class . '->orderAction');
+
+        $paypalService = GeneralUtility::makeInstance(PayPalService::class);
+
+        if (!$paypalService->authorize($this->settings['gateways']['paypal'])) {
+            throw new PayPalAuthException();
+        }
+
+        $orderDetails = $paypalService->getOrderDetails($transaction['id']);
+
+        // Send mail to user
+        if ($orderDetails['status'] == PayPalService::ORDER_STATUS_COMPLETED) {
+            $sendMailToUserService = GeneralUtility::makeInstance(SendMailToUserService::class, $this->settings);
+            $sendMailToUserService->send($orderDetails);
+        }
+
+        // Send mail to shop owner
+        $sendMailToAdminService = GeneralUtility::makeInstance(SendMailToAdminService::class, $this->settings);
+        $sendMailToAdminService->send($orderDetails);
+
+        // Delete session
+        // FrontendSessionUtility::removeSessionData($this->request, self::class . '->orderAction');
+
+        $this->view->assign('status', $orderDetails['status']);
         return $this->htmlResponse();
     }
 
     /**
      * Show list and detail view
      * @return ResponseInterface
+     * @throws PayPalAuthException
      */
     public function orderAction(): ResponseInterface
     {
@@ -119,6 +148,8 @@ class ShopController extends BaseController
                 } else {
                     $response = $transaction;
                 }
+
+                FrontendSessionUtility::storeSessionData($this->request, self::class . '->' . __FUNCTION__, $transaction);
             }
         } catch (\Exception $e) {
             $response = [
@@ -126,6 +157,10 @@ class ShopController extends BaseController
                 'message' => $e->getMessage(),
                 'code' => $e->getCode(),
             ];
+
+            // Send mail to user
+
+            // Send mail to shop owner
         }
 
         $this->view->assign('response', \json_encode($response));

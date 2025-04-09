@@ -17,7 +17,6 @@ declare(strict_types=1);
 
 namespace Wacon\Easyshop\Domain\Model;
 
-use TYPO3\CMS\Extbase\Domain\Model\Category;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -66,7 +65,7 @@ class Product extends AbstractEntity
     protected string $currency = 'EUR';
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Wacon\Easyshop\Domain\Model\Category>
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      */
     protected $categories;
@@ -88,7 +87,7 @@ class Product extends AbstractEntity
     /**
      * Set categories
      *
-     * @param  ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
+     * @param  ObjectStorage<\Wacon\Easyshop\Domain\Model\Category> $categories
      */
     public function setCategories($categories): void
     {
@@ -108,7 +107,7 @@ class Product extends AbstractEntity
     /**
      * Get categories
      *
-     * @return ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>|null
+     * @return ObjectStorage<\Wacon\Easyshop\Domain\Model\Category>|null
      */
     public function getCategories(): ?ObjectStorage
     {

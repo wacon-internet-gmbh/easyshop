@@ -15,10 +15,19 @@ declare(strict_types=1);
  * The TYPO3 project - inspiring people to share!
  */
 
+ use Wacon\Easyshop\Domain\Model\Category;
  use Wacon\Easyshop\Domain\Model\FileReference;
 
  return [
     FileReference::class => [
         'tableName' => 'sys_file_reference',
+    ],
+    Category::class => [
+        'tableName' => 'sys_category',
+        'properties' => [
+            'sorting' => [
+                'fieldName' => 'sorting',
+            ],
+        ],
     ],
 ];

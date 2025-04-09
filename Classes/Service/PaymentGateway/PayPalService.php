@@ -24,6 +24,8 @@ use TYPO3\CMS\Core\Http\RequestFactory;
 
 class PayPalService
 {
+    const ORDER_STATUS_COMPLETED = 'COMPLETED';
+
     /**
      * Settings
      * @var array
@@ -95,7 +97,7 @@ class PayPalService
     /**
      * Create order via /v2/checkout/orders
      * @param array $orderDetails
-     * @return \stdClass
+     * @return array
      */
     public function createOrder(array $orderDetails)
     {
@@ -139,6 +141,53 @@ class PayPalService
                         'Authorization' => 'bearer ' . $this->clientToken['access_token'],
                     ],
                     RequestOptions::JSON => $data,
+                ]
+            );
+        } catch (ClientException $e) {
+            throw new ClientException($e->getResponse()->getBody()->getContents(), $e->getRequest(), $e->getResponse(), $e);
+        }
+
+        if ($response->getStatusCode() < 200 || $response->getStatusCode() >= 300) {
+            throw new \RuntimeException(
+                'Returned status code is ' . $response->getStatusCode()
+            );
+        }
+
+        if (preg_match('/^application\/json/', $response->getHeaderLine('Content-Type')) !== 1) {
+            throw new \RuntimeException(
+                'The request did not return JSON data'
+            );
+        }
+
+        try {
+            $result = \json_decode($response->getBody()->getContents(), true, JSON_THROW_ON_ERROR);
+        } catch (\Exception $e) {
+            throw new \RuntimeException('The service returned an unexpected format.', 1666413230);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Show order details
+     * @param string $id
+     * @return array
+     */
+    public function getOrderDetails(string $id): array
+    {
+        $result = false;
+        $endpoint = $this->getPayPalAPIDomain();
+
+        try {
+            $response = $this->requestFactory->request(
+                $endpoint . '/v2/checkout/orders/' . $id,
+                'GET',
+                [
+                    'headers' => [
+                        'Accept' => 'application/json',
+                        'Content-Type' => 'application/json',
+                        'Authorization' => 'bearer ' . $this->clientToken['access_token'],
+                    ]
                 ]
             );
         } catch (ClientException $e) {

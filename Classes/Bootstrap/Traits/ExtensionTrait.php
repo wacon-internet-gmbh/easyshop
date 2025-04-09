@@ -174,4 +174,15 @@ trait ExtensionTrait
         return GeneralUtility::makeInstance(ExtensionConfiguration::class)
                 ->get($this->extensionKey);
     }
+
+    /**
+     * Configure fluid email paths
+     */
+    protected function configureFluidMailTemplatePaths(): void
+    {
+        $GLOBALS['TYPO3_CONF_VARS']['MAIL']['templateRootPaths'][]
+            = 'EXT:' . $this->extensionKey . '/Resources/Private/Templates/Email/';
+        $GLOBALS['TYPO3_CONF_VARS']['MAIL']['layoutRootPaths'][]
+            = 'EXT:' . $this->extensionKey . '/Resources/Private/Layouts/Email/';
+    }
 }

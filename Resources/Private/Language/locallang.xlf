@@ -17,6 +17,61 @@
 			<trans-unit id="pagetitle.product" resname="pagetitle.product">
 				<source>Our bag: %s</source>
 			</trans-unit>
+
+			<trans-unit id="plugin.easyshop_checkout.email.touser.subject" resname="plugin.easyshop_checkout.email.touser.subject">
+				<source>Order %s confirmed</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.touser.salutation" resname="plugin.easyshop_checkout.email.touser.salutation">
+				<source>Thank you for your purchase!</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.touser.text.I.0" resname="plugin.easyshop_checkout.email.touser.text.I.0">
+				<source>We have received your order and will process it as quickly as possible.</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.touser.order.overview" resname="plugin.easyshop_checkout.email.touser.order.overview">
+				<source>Order overview</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.touser.prices.subtotal" resname="plugin.easyshop_checkout.email.touser.prices.subtotal">
+				<source>Subtotal</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.touser.prices.shipping" resname="plugin.easyshop_checkout.email.touser.prices.shipping">
+				<source>Shipping</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.touser.prices.taxes" resname="plugin.easyshop_checkout.email.touser.prices.taxes">
+				<source>Taxes</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.touser.prices.total" resname="plugin.easyshop_checkout.email.touser.prices.total">
+				<source>Total</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.touser.order.customer" resname="plugin.easyshop_checkout.email.touser.text.I.1">
+				<source>Customer overview</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.touser.order.customer.shippingaddress" resname="plugin.easyshop_checkout.email.touser.order.customer.shippingaddress">
+				<source>Shipping address</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.touser.order.signature" resname="plugin.easyshop_checkout.email.touser.order.signature">
+				<source>If you have any questions, please reply to this email or contact us at %s</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.touser.order.signature.plain" resname="plugin.easyshop_checkout.email.touser.order.signature.plain">
+				<source>If you have any questions, please reply to this email or contact us at %s</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.toadmin.subject" resname="plugin.easyshop_checkout.email.toadmin.subject">
+				<source>New Order %s</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.toadmin.salutation" resname="plugin.easyshop_checkout.email.toadmin.salutation">
+				<source>You have a new sale!</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.toadmin.text.I.0" resname="plugin.easyshop_checkout.email.toadmin.text.I.0">
+				<source>You have received a new order.</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.toadmin.subject_error" resname="plugin.easyshop_checkout.email.toadmin.subject_error">
+				<source>New Order %s failed</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.toadmin.salutation_error" resname="plugin.easyshop_checkout.email.toadmin.salutation_error">
+				<source>Someone tried to make a purchase and it failed!</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_checkout.email.toadmin.text_error.I.0" resname="plugin.easyshop_checkout.email.toadmin.text_error.I.0">
+				<source>The following order could not been purchased. Please check the payment provider for further details.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

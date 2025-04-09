@@ -1,3 +1,8 @@
+## Version 1.3.0
+- [FEATURE] Extend Category model to get sorting field
+- [FEATURE] Send mail to user and admin, when purchase is completed or failed
+- [FEATURE] Set receiver mails in Site Set
+
 ## Version 1.2.0
 - [FEATURE] Add PageTitleProvider for product detail
 - [NOTICE] Add searchfields for tx_easyshop_domain_model_product

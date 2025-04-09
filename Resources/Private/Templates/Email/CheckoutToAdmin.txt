@@ -1,0 +1,40 @@
+<f:layout name="SystemEmail" />
+
+<f:section name="Subject">
+    <f:translate key="plugin.easyshop_checkout.email.toadmin.subject" extensionName="easyshop" arguments="{0: orderDetails.id}" />
+</f:section>
+
+<f:section name="Main">
+    <f:translate key="plugin.easyshop_checkout.email.toadmin.salutation" extensionName="easyshop" />
+
+    <f:translate key="plugin.easyshop_checkout.email.toadmin.text.I.0" extensionName="easyshop" />
+
+    <f:translate key="plugin.easyshop_checkout.email.touser.order.overview" extensionName="easyshop" />
+
+    <f:for each="{orderDetails.purchase_units}" as="unit" iteration="i">
+        <f:for each="{unit.items}" as="item" iteration="i">
+            {item.name}; <f:format.currency decimalSeparator="," thousandsSeparator="." decimals="2" currencySign="{unit.unit_amount.currency_code}">{unit.unit_amount.value}</f:format.currency>
+
+        </f:for>
+
+        <f:translate key="plugin.easyshop_checkout.email.touser.prices.subtotal" extensionName="easyshop" />: <f:format.currency decimalSeparator="," thousandsSeparator="." decimals="2" currencySign="{unit.amount.currency_code}">{unit.amount.value}</f:format.currency>
+        <f:translate key="plugin.easyshop_checkout.email.touser.prices.shipping" extensionName="easyshop" />: €0,00
+        <f:translate key="plugin.easyshop_checkout.email.touser.prices.taxes" extensionName="easyshop" />: <f:format.currency decimalSeparator="," thousandsSeparator="." decimals="2" currencySign="{unit.amount.breakdown.tax_total.currency_code}">{unit.amount.breakdown.tax_total.value}</f:format.currency>
+
+        --------------------------------------------------------------------------
+
+        <f:translate key="plugin.easyshop_checkout.email.touser.prices.total" extensionName="easyshop" />: <f:format.currency decimalSeparator="," thousandsSeparator="." decimals="2" currencySign="{unit.amount.breakdown.item_total.currency_code}">{unit.amount.breakdown.item_total.value}</f:format.currency>
+
+        <f:translate key="plugin.easyshop_checkout.email.touser.order.customer" extensionName="easyshop" />
+
+        <f:translate key="plugin.easyshop_checkout.email.touser.order.customer.shippingaddress" extensionName="easyshop" />
+        {unit.shipping.name.full_name}
+        {unit.shipping.address.address_line_1}
+        {unit.shipping.address.postal_code}
+        <f:if condition="{unit.shipping.address.admin_area_1}">{unit.shipping.address.admin_area_1}, </f:if>
+        {unit.shipping.address.admin_area_2}
+        {unit.shipping.address.country_code}
+
+        <f:translate key="plugin.easyshop_checkout.email.touser.order.signature.plain" extensionName="easyshop" arguments="{0: contactEmail}" />
+    </f:for>
+</f:section>

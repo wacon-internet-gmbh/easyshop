@@ -18,17 +18,21 @@ declare(strict_types=1);
 namespace Wacon\Easyshop\Bootstrap;
 
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+use Wacon\Easyshop\Bootstrap\Traits\ExtensionTrait;
 use Wacon\Easyshop\Controller\ProductController;
 use Wacon\Easyshop\Controller\ShopController;
 
 class ExtLocalconf extends Base
 {
+    use ExtensionTrait;
+
     /**
      * Does the main class purpose
      */
     public function invoke()
     {
         $this->configurePlugins();
+        $this->configureFluidMailTemplatePaths();
     }
 
     /**

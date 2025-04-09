@@ -1,0 +1,112 @@
+<f:layout name="SystemEmail" />
+
+<f:section name="Subject">
+    <f:translate key="plugin.easyshop_checkout.email.toadmin.subject_error" extensionName="easyshop" arguments="{0: orderDetails.id}" />
+</f:section>
+
+<f:section name="Main">
+    <f:render section="Css" />
+    <h1><f:translate key="plugin.easyshop_checkout.email.toadmin.salutation_error" extensionName="easyshop" /></h1>
+    <p><f:translate key="plugin.easyshop_checkout.email.toadmin.text_error.I.0" extensionName="easyshop" /></p>
+    <h2><f:translate key="plugin.easyshop_checkout.email.touser.order.overview" extensionName="easyshop" /></h2>
+    <f:for each="{orderDetails.purchase_units}" as="unit" iteration="i">
+        <table class="table table-products">
+            <tbody>
+                <f:for each="{unit.items}" as="item" iteration="i">
+                    <tr>
+                        <td class="td-product-name">
+                            <strong>{item.name}</strong>
+                        </td>
+                        <td class="td-product-price">
+                            <f:format.currency decimalSeparator="," thousandsSeparator="." decimals="2" currencySign="{item.unit_amount.currency_code}">{item.unit_amount.value}</f:format.currency>
+                        </td>
+                    </tr>
+                </f:for>
+            </tbody>
+        </table>
+        <table class="table table-prices">
+            <tbody>
+                <tr>
+                    <td class="td-whitespace"></td>
+                    <td class="td-prices">
+                        <table class="table">
+                            <tr>
+                                <td class="td-label"><f:translate key="plugin.easyshop_checkout.email.touser.prices.subtotal" extensionName="easyshop" /></td>
+                                <td class="td-value"><f:format.currency decimalSeparator="," thousandsSeparator="." decimals="2" currencySign="{unit.amount.currency_code}">{unit.amount.value}</f:format.currency></td>
+                            </tr>
+                            <tr>
+                                <td class="td-label"><f:translate key="plugin.easyshop_checkout.email.touser.prices.shipping" extensionName="easyshop" /></td>
+                                <td class="td-value">0,00 EUR</td>
+                            </tr>
+                            <tr>
+                                <td class="td-label"><f:translate key="plugin.easyshop_checkout.email.touser.prices.taxes" extensionName="easyshop" /></td>
+                                <td class="td-value"><f:format.currency decimalSeparator="," thousandsSeparator="." decimals="2" currencySign="{unit.amount.breakdown.tax_total.currency_code}">{unit.amount.breakdown.tax_total.value}</f:format.currency></td>
+                            </tr>
+                            <tr class="hr">
+                                <td colspan="2"><hr /></td>
+                            </tr>
+                            <tr>
+                                <td class="td-label"><f:translate key="plugin.easyshop_checkout.email.touser.prices.total" extensionName="easyshop" /></td>
+                                <td class="td-value"><f:format.currency decimalSeparator="," thousandsSeparator="." decimals="2" currencySign="{unit.amount.breakdown.item_total.currency_code}">{unit.amount.breakdown.item_total.value}</f:format.currency></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2><f:translate key="plugin.easyshop_checkout.email.touser.order.customer" extensionName="easyshop" /></h2>
+        <p><strong><f:translate key="plugin.easyshop_checkout.email.touser.order.customer.shippingaddress" extensionName="easyshop" /></strong></p>
+        <p>
+            {unit.shipping.name.full_name}<br />
+            {unit.shipping.address.address_line_1}<br />
+            {unit.shipping.address.postal_code}
+            <f:if condition="{unit.shipping.address.admin_area_1}">{unit.shipping.address.admin_area_1}, </f:if>
+            {unit.shipping.address.admin_area_2}<br />
+            {unit.shipping.address.country_code}
+        </p>
+        <p><f:format.raw><f:translate key="plugin.easyshop_checkout.email.touser.order.signature" extensionName="easyshop" arguments="{0: contactEmail}" /></f:format.raw></p>
+    </f:for>
+</f:section>
+<f:section name="Css">
+<style>
+h1, h2, h3 {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+}
+
+h3 {
+    font-size: 1rem;
+}
+
+.table {
+    width: 100%;
+}
+
+.td-product-name,
+.td-label {
+    width: 80%;
+    font-weight: bold;
+}
+
+.td-prices .td-label {
+    width: 60%;
+}
+
+.td-product-price,
+.td-value {
+    text-align: right;
+}
+
+.td-whitespace {
+    width: 30%;
+}
+</style>
+</f:section>
