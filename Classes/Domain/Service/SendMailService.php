@@ -52,12 +52,6 @@ class SendMailService
      */
     protected function getSystemFromAddress(): Address
     {
-        $from = MailUtility::getSystemFrom();
-
-        if (\count($from) == 2) {
-            return new Address($from[0], $from[1]);
-        }
-
-        return new Address($from[0]);
+        return new Address(MailUtility::getSystemFromAddress());
     }
 }
