@@ -5,7 +5,7 @@
 </f:section>
 
 <f:section name="Main">
-    <f:render section="Css" />
+    <f:render partial="Css" />
     <h1><f:translate key="plugin.easyshop_checkout.email.toadmin.salutation_error" extensionName="easyshop" /></h1>
     <p><f:translate key="plugin.easyshop_checkout.email.toadmin.text_error.I.0" extensionName="easyshop" /></p>
     <h2><f:translate key="plugin.easyshop_checkout.email.touser.order.overview" extensionName="easyshop" /></h2>
@@ -66,47 +66,4 @@
         </p>
         <p><f:format.raw><f:translate key="plugin.easyshop_checkout.email.touser.order.signature" extensionName="easyshop" arguments="{0: contactEmail}" /></f:format.raw></p>
     </f:for>
-</f:section>
-<f:section name="Css">
-<style>
-h1, h2, h3 {
-    font-weight: bold;
-}
-
-h1 {
-    font-size: 1.5rem;
-}
-
-h2 {
-    font-size: 1.2rem;
-    margin-top: 2rem;
-}
-
-h3 {
-    font-size: 1rem;
-}
-
-.table {
-    width: 100%;
-}
-
-.td-product-name,
-.td-label {
-    width: 80%;
-    font-weight: bold;
-}
-
-.td-prices .td-label {
-    width: 60%;
-}
-
-.td-product-price,
-.td-value {
-    text-align: right;
-}
-
-.td-whitespace {
-    width: 30%;
-}
-</style>
 </f:section>

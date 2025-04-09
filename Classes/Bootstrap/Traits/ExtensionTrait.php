@@ -182,6 +182,8 @@ trait ExtensionTrait
     {
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['templateRootPaths'][]
             = 'EXT:' . $this->extensionKey . '/Resources/Private/Templates/Email/';
+        $GLOBALS['TYPO3_CONF_VARS']['MAIL']['partialRootPaths'][]
+            = 'EXT:' . $this->extensionKey . '/Resources/Private/Partials/Email/';
         $GLOBALS['TYPO3_CONF_VARS']['MAIL']['layoutRootPaths'][]
             = 'EXT:' . $this->extensionKey . '/Resources/Private/Layouts/Email/';
     }
