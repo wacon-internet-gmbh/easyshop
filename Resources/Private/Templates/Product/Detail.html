@@ -17,7 +17,7 @@
                     <span class="article-vat-info small"><f:translate key="product.vat_info" extensionName="easyshop" /></span>
                 </p>
                 <div class="article-gateway">
-                    <f:render partial="Gateway/Paypal" arguments="{product: product, settings: settings, orderurl: orderurl, successurl: successurl, errorurl: errorurl}" />
+                    <f:link.action class="btn btn-primary w-100 mb-3" action="orderForm" controller="Shop" pluginName="OrderForm" pageUid="{settings.pages.orderForm}" arguments="{product: product}"><f:translate key="product.button.order" extensionName="easyshop"/></f:link.action>
                 </div>
                 <div class="article-description">
                     <f:format.html>{product.description}</f:format.html>

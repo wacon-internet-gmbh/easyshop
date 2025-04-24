@@ -6,6 +6,10 @@
 			<trans-unit id="product.vat_info" resname="product.vat_info">
 				<target>inkl. MwSt.</target>
 			</trans-unit>
+			<trans-unit id="product.button.order" resname="product.button.order">
+				<target>Kaufen</target>
+			</trans-unit>
+
 			<trans-unit id="shop.checkout.success" resname="shop.checkout.success">
 				<target>Vielen Dank für Ihre Bestellung. Wir werden Ihre Bestellung so schnell wie möglich bearbeiten und Sie informieren, sobald wir die Ware verschickt haben.</target>
 			</trans-unit>

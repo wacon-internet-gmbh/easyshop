@@ -29,6 +29,7 @@ plugin.tx_easyshop {
     }
     pages {
       checkout =
+      orderForm =
     }
     emails {
       orderConfirmation = {$Easyshop.emails.orderConfirmation}
