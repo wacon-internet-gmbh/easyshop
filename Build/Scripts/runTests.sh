@@ -370,7 +370,7 @@ while getopts "a:b:s:d:i:p:e:t:xy:nhu" OPT; do
             ;;
         t)
             TYPO3_VERSION=${OPTARG}
-            if ! [[ ${TYPO3_VERSION} =~ ^(11|12)$ ]]; then
+            if ! [[ ${TYPO3_VERSION} =~ ^(11|12|13)$ ]]; then
                 INVALID_OPTIONS+=("-t ${OPTARG}")
             fi
             ;;
@@ -516,6 +516,10 @@ case ${TEST_SUITE} in
               composer require --no-ansi --no-interaction --no-progress --no-install \
                 typo3/cms-core:^12.4.2 || exit 1
             fi
+            if [ ${TYPO3_VERSION} -eq 13 ]; then
+              composer require --no-ansi --no-interaction --no-progress --no-install \
+                typo3/cms-core:^12.4.2 || exit 1
+            fi
             composer update --no-progress --no-interaction  || exit 1
             composer show || exit 1
         "
@@ -533,6 +537,11 @@ case ${TEST_SUITE} in
             if [ ${TYPO3_VERSION} -eq 12 ]; then
               composer require --no-ansi --no-interaction --no-progress --no-install \
                 typo3/cms-core:^12.4.2 || exit 1
+            fi
+
+            if [ ${TYPO3_VERSION} -eq 13 ]; then
+              composer require --no-ansi --no-interaction --no-progress --no-install \
+                typo3/cms-core:^13.4 || exit 1
             fi
             composer update --no-ansi --no-interaction --no-progress --with-dependencies --prefer-lowest || exit 1
             composer show || exit 1
