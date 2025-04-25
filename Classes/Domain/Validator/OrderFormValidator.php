@@ -40,7 +40,7 @@ class OrderFormValidator extends AbstractValidator
         if (!$orderForm->isEmpty()) {
             $requiredFields = ['firstname', 'lastname', 'street', 'postcode', 'city', 'country'];
 
-            foreach($requiredFields as $requiredField) {
+            foreach ($requiredFields as $requiredField) {
                 $func = 'get' . \ucfirst($requiredField);
 
                 if (\trim($orderForm->$func()) == '') {

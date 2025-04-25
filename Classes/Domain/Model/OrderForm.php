@@ -64,173 +64,173 @@ class OrderForm
      */
     protected string $country = '';
 
-	/**
-	 * Get product that is ordered
-	 *
-	 * @return Product
-	 */
-	public function getProduct(): Product
-	{
-		return $this->product;
-	}
+    /**
+     * Get product that is ordered
+     *
+     * @return Product
+     */
+    public function getProduct(): Product
+    {
+        return $this->product;
+    }
 
-	/**
-	 * Set product that is ordered
-	 *
-	 * @param Product  $product
-	 *
-	 * @return self
-	 */
-	public function setProduct(Product $product): self
-	{
-		$this->product = $product;
+    /**
+     * Set product that is ordered
+     *
+     * @param Product  $product
+     *
+     * @return self
+     */
+    public function setProduct(Product $product): self
+    {
+        $this->product = $product;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Get firstname
-	 *
-	 * @return string
-	 */
-	public function getFirstname(): string
-	{
-		return $this->firstname;
-	}
+    /**
+     * Get firstname
+     *
+     * @return string
+     */
+    public function getFirstname(): string
+    {
+        return $this->firstname;
+    }
 
-	/**
-	 * Set firstname
-	 *
-	 * @param string  $firstname
-	 *
-	 * @return self
-	 */
-	public function setFirstname(string $firstname): self
-	{
-		$this->firstname = \trim($firstname);
+    /**
+     * Set firstname
+     *
+     * @param string  $firstname
+     *
+     * @return self
+     */
+    public function setFirstname(string $firstname): self
+    {
+        $this->firstname = \trim($firstname);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Get lastname
-	 *
-	 * @return string
-	 */
-	public function getLastname(): string
-	{
-		return $this->lastname;
-	}
+    /**
+     * Get lastname
+     *
+     * @return string
+     */
+    public function getLastname(): string
+    {
+        return $this->lastname;
+    }
 
-	/**
-	 * Set lastname
-	 *
-	 * @param string  $lastname
-	 *
-	 * @return self
-	 */
-	public function setLastname(string $lastname): self
-	{
-		$this->lastname = \trim($lastname);
+    /**
+     * Set lastname
+     *
+     * @param string  $lastname
+     *
+     * @return self
+     */
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = \trim($lastname);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Get street
-	 *
-	 * @return string
-	 */
-	public function getStreet(): string
-	{
-		return $this->street;
-	}
+    /**
+     * Get street
+     *
+     * @return string
+     */
+    public function getStreet(): string
+    {
+        return $this->street;
+    }
 
-	/**
-	 * Set street
-	 *
-	 * @param string  $street
-	 *
-	 * @return self
-	 */
-	public function setStreet(string $street): self
-	{
-		$this->street = \trim($street);
+    /**
+     * Set street
+     *
+     * @param string  $street
+     *
+     * @return self
+     */
+    public function setStreet(string $street): self
+    {
+        $this->street = \trim($street);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Get postcode
-	 *
-	 * @return string
-	 */
-	public function getPostcode(): string
-	{
-		return $this->postcode;
-	}
+    /**
+     * Get postcode
+     *
+     * @return string
+     */
+    public function getPostcode(): string
+    {
+        return $this->postcode;
+    }
 
-	/**
-	 * Set postcode
-	 *
-	 * @param string  $postcode
-	 *
-	 * @return self
-	 */
-	public function setPostcode(string $postcode): self
-	{
-		$this->postcode = \trim($postcode);
+    /**
+     * Set postcode
+     *
+     * @param string  $postcode
+     *
+     * @return self
+     */
+    public function setPostcode(string $postcode): self
+    {
+        $this->postcode = \trim($postcode);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Get city
-	 *
-	 * @return string
-	 */
-	public function getCity(): string
-	{
-		return $this->city;
-	}
+    /**
+     * Get city
+     *
+     * @return string
+     */
+    public function getCity(): string
+    {
+        return $this->city;
+    }
 
-	/**
-	 * Set city
-	 *
-	 * @param string  $city
-	 *
-	 * @return self
-	 */
-	public function setCity(string $city): self
-	{
-		$this->city = \trim($city);
+    /**
+     * Set city
+     *
+     * @param string  $city
+     *
+     * @return self
+     */
+    public function setCity(string $city): self
+    {
+        $this->city = \trim($city);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Get country
-	 *
-	 * @return string
-	 */
-	public function getCountry(): string
-	{
-		return $this->country;
-	}
+    /**
+     * Get country
+     *
+     * @return string
+     */
+    public function getCountry(): string
+    {
+        return $this->country;
+    }
 
-	/**
-	 * Set country
-	 *
-	 * @param string  $country
-	 *
-	 * @return self
-	 */
-	public function setCountry(string $country): self
-	{
-		$this->country = \trim($country);
+    /**
+     * Set country
+     *
+     * @param string  $country
+     *
+     * @return self
+     */
+    public function setCountry(string $country): self
+    {
+        $this->country = \trim($country);
 
-		return $this;
-	}
+        return $this;
+    }
 
     /**
      * Check if model is empty
@@ -277,7 +277,7 @@ class OrderForm
         $allProperties = $reflectionClass->getProperties();
         $exportData = [];
 
-        foreach($allProperties as $property) {
+        foreach ($allProperties as $property) {
             $propertyName = $property->getName();
 
             if ($this->$propertyName instanceof AbstractEntity) {
