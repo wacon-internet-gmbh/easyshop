@@ -242,7 +242,7 @@ class OrderForm
         $allProperties = $reflectionClass->getProperties();
         $propertiesToIgnore = ['product', 'country'];
 
-        foreach($allProperties as $property) {
+        foreach ($allProperties as $property) {
             $propertyName = $property->getName();
 
             if (\in_array($propertyName, $propertiesToIgnore)) {
