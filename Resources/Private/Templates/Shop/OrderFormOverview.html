@@ -1,0 +1,26 @@
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <f:asset.script identifier="easyshop-orderform" src="EXT:easyshop/Resources/Public/JavaScript/OrderForm.js" />
+    <h2><f:translate key="plugin.easyshop_orderform.orderForm.step2" extensionName="easyshop" /></h2>
+    <f:form action="orderFormCheckout" name="orderForm" object="{orderForm}" method="POST">
+        <div class="mb-3">
+            <f:if condition="{orderForm.isEmpty}">
+                <f:then>
+                    <p><f:translate key="plugin.easyshop_orderform.orderForm.step2.empty_info" extensionName="easyshop" /></p>
+                </f:then>
+                <f:else>
+                    <f:render partial="Order/OrderFormReadOnly" arguments="{orderForm: orderForm}" />
+                </f:else>
+            </f:if>
+        </div>
+        <div>
+            <f:form.hidden property="product" value="{product}" />
+            <f:link.action id="easyshopOrderFormPreviousLink" class="btn btn-secondary" action="orderForm" arguments="{product: orderForm.product, orderForm: orderForm}"><f:translate key="plugin.easyshop_orderform.orderForm.previous" extensionName="easyshop" /></f:link.action>
+            <f:form.submit class="btn btn-primary" name="submit" value="{f:translate(key: 'plugin.easyshop_orderform.orderForm.next', extensionName: 'easyshop')}" />
+        </div>
+    </f:form>
+    <f:form class="d-none form-previous" action="orderForm" object="{orderForm}" method="POST">
+        <f:render partial="Order/OrderFormHidden" arguments="{orderForm: orderForm}" />
+    </f:form>
+</f:section>

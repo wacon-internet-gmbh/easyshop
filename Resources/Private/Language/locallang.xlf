@@ -3,6 +3,10 @@
 	<file source-language="en" original="EXT:easyshop/Resources/Private/Language/locallang.xlf" datatype="plaintext" product-name="easyshop" date="2024-08-28T10:57:45+02:00">
 		<header/>
 		<body>
+			<trans-unit id="misc.countries.germany" resname="misc.countries.germany">
+				<source>Germany</source>
+			</trans-unit>
+
 			<trans-unit id="product.vat_info" resname="product.vat_info">
 				<source>incl. VAT</source>
 			</trans-unit>
@@ -74,6 +78,73 @@
 			</trans-unit>
 			<trans-unit id="plugin.easyshop_checkout.email.toadmin.text_error.I.0" resname="plugin.easyshop_checkout.email.toadmin.text_error.I.0">
 				<source>The following order could not been purchased. Please check the payment provider for further details.</source>
+			</trans-unit>
+
+			<trans-unit id="plugin.easyshop_orderform.orderForm.next" resname="plugin.easyshop_orderform.orderForm.next">
+				<source>Next step</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.previous" resname="plugin.easyshop_orderform.orderForm.previous">
+				<source>Previous step</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.complete" resname="plugin.easyshop_orderform.orderForm.complete">
+				<source>Complete order</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.step1" resname="plugin.easyshop_orderform.orderForm.step1">
+				<source>Step 1/3: Alternative delivery address</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.step1.description" resname="plugin.easyshop_orderform.orderForm.step1.description">
+				<source>If the delivery address differ from the PayPal Account, then please enter the alternative address below or leave the form empty.</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.step2" resname="plugin.easyshop_orderform.orderForm.step2">
+				<source>Step 2/3: Verify your data</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.step2.empty_info" resname="plugin.easyshop_orderform.orderForm.step2.empty_info">
+				<source>We send the product to the delivery address of your PayPal account.</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.step3" resname="plugin.easyshop_orderform.orderForm.step3">
+				<source>Step 3/3: Payment method</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.lastname" resname="plugin.easyshop_orderform.lastname">
+				<source>Lastname</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.firstname" resname="plugin.easyshop_orderform.firstname">
+				<source>Firstname</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.street" resname="plugin.easyshop_orderform.street">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.postcode" resname="plugin.easyshop_orderform.postcode">
+				<source>Postcode</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.city" resname="plugin.easyshop_orderform.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.country" resname="plugin.easyshop_orderform.country">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.country.help" resname="plugin.easyshop_orderform.country.help">
+				<source>We only ship inside germany</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.validation.error.postcode" resname="plugin.easyshop_orderform.validation.error.postcode">
+				<source>The postcode is invalid</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.validation.error.country" resname="plugin.easyshop_orderform.validation.error.country">
+				<source>We only ship inside germany</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.validation.error.firstname" resname="plugin.easyshop_orderform.validation.error.firstname">
+				<source>Firstname is required</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.validation.error.lastname" resname="plugin.easyshop_orderform.validation.error.lastname">
+				<source>Lastname is required</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.validation.error.street" resname="plugin.easyshop_orderform.validation.error.street">
+				<source>Street is required</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.validation.error.postcode" resname="plugin.easyshop_orderform.validation.error.postcode">
+				<source>Postcode is required</source>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.validation.error.city" resname="plugin.easyshop_orderform.validation.error.city">
+				<source>City is required</source>
 			</trans-unit>
 		</body>
 	</file>

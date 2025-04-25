@@ -17,8 +17,10 @@ declare(strict_types=1);
 
 namespace Wacon\Easyshop\Controller;
 
+use Psr\Http\Message\ServerRequestInterface;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use Wacon\Easyshop\Utility\FrontendSessionUtility;
 
 class BaseController extends ActionController
 {
@@ -79,5 +81,17 @@ class BaseController extends ActionController
         $body = array_key_exists('tx_easyshop_order', $body) ? $body['tx_easyshop_order'] : [];
 
         return $body;
+    }
+
+    /**
+     * Get cart info from session
+     * @param \Psr\Http\Message\ServerRequestInterface $request
+     * @return array
+     */
+    protected function getCartFromSession(ServerRequestInterface $request): array
+    {
+        $data = FrontendSessionUtility::getSessionData($request, ShopController::class . '->orderFormCheckoutAction');
+
+        return $data ? ['cart' => [$data]] : [];
     }
 }

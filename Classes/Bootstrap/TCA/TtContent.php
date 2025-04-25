@@ -54,5 +54,11 @@ class TtContent extends Base
             'Checkout',
             $this->getLLL('locallang_plugins.xlf:checkout'),
         );
+
+        $pluginSignature = ExtensionUtility::registerPlugin(
+            $this->getExtensionKeyAsNamespace(),
+            'OrderForm',
+            $this->getLLL('locallang_plugins.xlf:orderForm'),
+        );
     }
 }

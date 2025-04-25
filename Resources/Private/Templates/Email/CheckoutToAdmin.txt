@@ -28,13 +28,22 @@
         <f:translate key="plugin.easyshop_checkout.email.touser.order.customer" extensionName="easyshop" />
 
         <f:translate key="plugin.easyshop_checkout.email.touser.order.customer.shippingaddress" extensionName="easyshop" />
-        {unit.shipping.name.full_name}
-        {unit.shipping.address.address_line_1}
-        {unit.shipping.address.postal_code}
-        <f:if condition="{unit.shipping.address.admin_area_1}">{unit.shipping.address.admin_area_1}, </f:if>
-        {unit.shipping.address.admin_area_2}
-        {unit.shipping.address.country_code}
-
+        <f:if condition="{orderForm.isEmpty}">
+            <f:then>
+                {unit.shipping.name.full_name}
+                {unit.shipping.address.address_line_1}
+                {unit.shipping.address.postal_code}
+                <f:if condition="{unit.shipping.address.admin_area_1}">{unit.shipping.address.admin_area_1}, </f:if>
+                {unit.shipping.address.admin_area_2}
+                {unit.shipping.address.country_code}
+            </f:then>
+            <f:else>
+                {orderForm.firstname} {orderForm.lastname}<br />
+                {orderForm.street}<br />
+                {orderForm.postcode} {orderForm.city}<br />
+                {orderForm.country}
+            </f:else>
+        </f:if>
         <f:translate key="plugin.easyshop_checkout.email.touser.order.signature.plain" extensionName="easyshop" arguments="{0: contactEmail}" />
     </f:for>
 </f:section>

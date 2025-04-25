@@ -31,8 +31,9 @@ class SendMailToUserService extends SendMailService
     /**
      * Send mail to user
      * @param array $orderDetails
+     * @param array $orderForm
      */
-    public function send(array $orderDetails): void
+    public function send(array $orderDetails, array $orderForm): void
     {
         $fluidEmail = $this->getFluidEmailInstance();
         $fluidEmail
@@ -42,6 +43,7 @@ class SendMailToUserService extends SendMailService
             ->format(FluidEmail::FORMAT_BOTH)
             ->setTemplate('CheckoutToUser')
             ->assign('orderDetails', $orderDetails)
+            ->assign('orderForm', $orderForm)
             ->assign('contactEmail', $this->settings['emails']['orderContact']);
 
         GeneralUtility::makeInstance(MailerInterface::class)->send($fluidEmail);

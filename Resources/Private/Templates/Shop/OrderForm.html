@@ -1,0 +1,14 @@
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <h2><f:translate key="plugin.easyshop_orderform.orderForm.step1" extensionName="easyshop" /></h2>
+    <p><f:translate key="plugin.easyshop_orderform.orderForm.step1.description" extensionName="easyshop" /></p>
+    <f:form action="orderFormOverview" name="orderForm" object="{orderForm}" method="POST">
+        <f:render partial="Order/OrderForm" arguments="{orderForm: orderForm}" />
+        <div class="mt-3">
+            <f:form.hidden name="product" value="{product}" />
+            <f:form.hidden property="product" value="{product}" />
+            <f:form.submit class="btn btn-primary" name="submit" value="{f:translate(key: 'plugin.easyshop_orderform.orderForm.next', extensionName: 'easyshop')}" />
+        </div>
+    </f:form>
+</f:section>

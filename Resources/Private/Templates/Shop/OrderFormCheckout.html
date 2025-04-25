@@ -1,0 +1,8 @@
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <h2><f:translate key="plugin.easyshop_orderform.orderForm.step3" extensionName="easyshop" /></h2>
+    <div class="mt-3">
+        <f:render partial="Gateway/Paypal" arguments="{product: orderForm.product, settings: settings, orderurl: orderurl, successurl: successurl, errorurl: errorurl}" />
+    </div>
+</f:section>

@@ -16,6 +16,10 @@
 			<trans-unit id="checkout" resname="checkout">
 				<source>Checkout</source>
 			</trans-unit>
+
+			<trans-unit id="orderForm" resname="orderForm">
+				<source>Order Form</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -21,6 +21,7 @@ use Psr\Http\Message\ResponseInterface;
 use Wacon\Easyshop\Domain\Model\Product;
 use Wacon\Easyshop\Domain\Repository\ProductRepository;
 use Wacon\Easyshop\PageTitle\ProductPageTitleProvider;
+use Wacon\Easyshop\Utility\FrontendSessionUtility;
 
 class ProductController extends BaseController
 {
@@ -53,10 +54,11 @@ class ProductController extends BaseController
     {
         $this->pageTitleProvider->setTitle($product);
 
+        // make sure we start with a clean cart session
+        FrontendSessionUtility::removeSessionData($this->request, ShopController::class . '->orderAction');
+        FrontendSessionUtility::removeSessionData($this->request, ShopController::class . '->orderFormCheckoutAction');
+
         $this->view->assign('product', $product);
-        $this->view->assign('orderurl', $this->createOrderUrl());
-        $this->view->assign('successurl', $this->createCheckoutUrl(['tx_easyshop_checkout' => ['mode' => 'return']]));
-        $this->view->assign('errorurl', $this->createCheckoutUrl(['tx_easyshop_checkout' => ['mode' => 'error']]));
 
         return $this->htmlResponse();
     }

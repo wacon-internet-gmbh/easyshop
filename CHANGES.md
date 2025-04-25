@@ -1,3 +1,6 @@
+## Version 1.4.0
+- [FEATURE] New process workflow with order form to set alternative delivery address
+
 ## Version dev-1.4.0-0
 - [WIP] New plugin to show order form
 - [FEATURE] Replace PayPal Checkout with link to a order form to ask for name and address differ from paypal account

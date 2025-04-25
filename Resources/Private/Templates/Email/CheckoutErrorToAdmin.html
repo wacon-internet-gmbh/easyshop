@@ -56,14 +56,26 @@
         </table>
         <h2><f:translate key="plugin.easyshop_checkout.email.touser.order.customer" extensionName="easyshop" /></h2>
         <p><strong><f:translate key="plugin.easyshop_checkout.email.touser.order.customer.shippingaddress" extensionName="easyshop" /></strong></p>
-        <p>
-            {unit.shipping.name.full_name}<br />
-            {unit.shipping.address.address_line_1}<br />
-            {unit.shipping.address.postal_code}
-            <f:if condition="{unit.shipping.address.admin_area_1}">{unit.shipping.address.admin_area_1}, </f:if>
-            {unit.shipping.address.admin_area_2}<br />
-            {unit.shipping.address.country_code}
-        </p>
+        <f:if condition="{orderForm.isEmpty}">
+            <f:then>
+                <p>
+                    {unit.shipping.name.full_name}<br />
+                    {unit.shipping.address.address_line_1}<br />
+                    {unit.shipping.address.postal_code}
+                    <f:if condition="{unit.shipping.address.admin_area_1}">{unit.shipping.address.admin_area_1}, </f:if>
+                    {unit.shipping.address.admin_area_2}<br />
+                    {unit.shipping.address.country_code}
+                </p>
+            </f:then>
+            <f:else>
+                <p>
+                    {orderForm.firstname} {orderForm.lastname}<br />
+                    {orderForm.street}<br />
+                    {orderForm.postcode} {orderForm.city}<br />
+                    {orderForm.country}
+                </p>
+            </f:else>
+        </f:if>
         <p><f:format.raw><f:translate key="plugin.easyshop_checkout.email.touser.order.signature" extensionName="easyshop" arguments="{0: contactEmail}" /></f:format.raw></p>
     </f:for>
 </f:section>

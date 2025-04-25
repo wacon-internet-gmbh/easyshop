@@ -19,9 +19,15 @@ namespace Wacon\Easyshop\Controller;
 
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Annotation\Validate;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+use Wacon\Easyshop\Bootstrap\Traits\ExtensionTrait;
+use Wacon\Easyshop\Domain\Model\OrderForm;
+use Wacon\Easyshop\Domain\Model\Product;
 use Wacon\Easyshop\Domain\Repository\ProductRepository;
 use Wacon\Easyshop\Domain\Service\SendMailToAdminService;
 use Wacon\Easyshop\Domain\Service\SendMailToUserService;
+use Wacon\Easyshop\Domain\Validator\OrderFormValidator;
 use Wacon\Easyshop\Exception\PayPalAuthException;
 use Wacon\Easyshop\Exception\ProductNotFoundException;
 use Wacon\Easyshop\Service\PaymentGateway\PayPalService;
@@ -29,6 +35,8 @@ use Wacon\Easyshop\Utility\FrontendSessionUtility;
 
 class ShopController extends BaseController
 {
+    use ExtensionTrait;
+
     public function __construct(
         private readonly ProductRepository $productRepository
     ) {}
@@ -42,6 +50,7 @@ class ShopController extends BaseController
     {
         $mode = $this->request->getArgument('mode');
         $transaction = FrontendSessionUtility::getSessionData($this->request, self::class . '->orderAction');
+        $orderForm = FrontendSessionUtility::getSessionData($this->request, self::class . '->orderFormCheckoutAction');
 
         $paypalService = GeneralUtility::makeInstance(PayPalService::class);
 
@@ -54,15 +63,16 @@ class ShopController extends BaseController
         // Send mail to user
         if ($orderDetails['status'] == PayPalService::ORDER_STATUS_COMPLETED) {
             $sendMailToUserService = GeneralUtility::makeInstance(SendMailToUserService::class, $this->settings);
-            $sendMailToUserService->send($orderDetails);
+            $sendMailToUserService->send($orderDetails, $orderForm);
         }
 
         // Send mail to shop owner
         $sendMailToAdminService = GeneralUtility::makeInstance(SendMailToAdminService::class, $this->settings);
-        $sendMailToAdminService->send($orderDetails);
+        $sendMailToAdminService->send($orderDetails, $orderForm);
 
         // Delete session
         FrontendSessionUtility::removeSessionData($this->request, self::class . '->orderAction');
+        FrontendSessionUtility::removeSessionData($this->request, self::class . '->orderFormCheckoutAction');
 
         $this->view->assign('status', $orderDetails['status']);
         return $this->htmlResponse();
@@ -77,7 +87,7 @@ class ShopController extends BaseController
     {
         $response = [];
         $paypalService = GeneralUtility::makeInstance(PayPalService::class);
-        $arguments = $this->getCartFromPostViaJSON();
+        $arguments = $this->getCartFromSession($this->request);
 
         try {
             if (!is_array($arguments) || !array_key_exists('cart', $arguments)) {
@@ -91,11 +101,11 @@ class ShopController extends BaseController
                     throw new PayPalAuthException();
                 }
 
-                $productData = current($arguments['cart']);
-                $product = $this->productRepository->findByUid($productData['id']);
+                $orderForm = current($arguments['cart']);
+                $product = $this->productRepository->findByUid((int)$orderForm['product']);
 
                 if (!$product) {
-                    throw new ProductNotFoundException('Product with id: ' . $productData['id'] . ' could not be found.', time());
+                    throw new ProductNotFoundException('Product with id: ' . $orderForm['id'] . ' could not be found.', time());
                 }
 
                 $orderDetails = [
@@ -157,13 +167,61 @@ class ShopController extends BaseController
                 'message' => $e->getMessage(),
                 'code' => $e->getCode(),
             ];
-
-            // Send mail to user
-
-            // Send mail to shop owner
         }
 
         $this->view->assign('response', \json_encode($response));
         return $this->jsonResponse();
+    }
+
+    /**
+     * Show order form
+     * @param \Wacon\Easyshop\Domain\Model\Product $product
+     * @param \Wacon\Easyshop\Domain\Model\OrderForm $orderForm
+     * @return ResponseInterface
+     */
+    public function orderFormAction(Product $product, OrderForm $orderForm = null): ResponseInterface
+    {
+        if (!$orderForm) {
+            $orderForm = GeneralUtility::makeInstance(OrderForm::class);
+            $orderForm->setProduct($product);
+            $orderForm->setCountry(LocalizationUtility::translate('misc.countries.germany', $this->extensionKey));
+        }
+
+        $this->view->assign('product', $product);
+        $this->view->assign('orderForm', $orderForm);
+
+        return $this->htmlResponse();
+    }
+
+    /**
+     * Show overview of the order form input
+     * @param \Wacon\Easyshop\Domain\Model\OrderForm $orderForm
+     * @return ResponseInterface
+     */
+    #[Validate([
+        'param' => 'orderForm',
+        'validator' => OrderFormValidator::class,
+    ])]
+    public function orderFormOverviewAction(OrderForm $orderForm): ResponseInterface
+    {
+        $this->view->assign('orderForm', $orderForm);
+        return $this->htmlResponse();
+    }
+
+    /**
+     * Show overview of the order form input
+     * @param \Wacon\Easyshop\Domain\Model\OrderForm $orderForm)
+     * @return ResponseInterface
+     */
+    public function orderFormCheckoutAction(OrderForm $orderForm): ResponseInterface
+    {
+        FrontendSessionUtility::storeSessionData($this->request, self::class . '->' . __FUNCTION__, $orderForm->exportForSession());
+
+        $this->view->assign('orderurl', $this->createOrderUrl());
+        $this->view->assign('successurl', $this->createCheckoutUrl(['tx_easyshop_checkout' => ['mode' => 'return']]));
+        $this->view->assign('errorurl', $this->createCheckoutUrl(['tx_easyshop_checkout' => ['mode' => 'error']]));
+        $this->view->assign('orderForm', $orderForm);
+
+        return $this->htmlResponse();
     }
 }

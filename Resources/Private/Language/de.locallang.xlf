@@ -3,6 +3,10 @@
 	<file source-language="en" target-language="de" original="EXT:easyshop/Resources/Private/Language/locallang.xlf" datatype="plaintext" product-name="easyshop" date="2024-08-28T10:57:45+02:00">
 		<header/>
 		<body>
+			<trans-unit id="misc.countries.germany" resname="misc.countries.germany">
+				<target>Deutschland</target>
+			</trans-unit>
+
 			<trans-unit id="product.vat_info" resname="product.vat_info">
 				<target>inkl. MwSt.</target>
 			</trans-unit>
@@ -19,6 +23,52 @@
 
 			<trans-unit id="pagetitle.product" resname="pagetitle.product">
 				<target>Unsere Tasche: %s</target>
+			</trans-unit>
+
+			<trans-unit id="plugin.easyshop_orderform.orderForm.next" resname="plugin.easyshop_orderform.orderForm.next">
+				<target>Nächster Schritt</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.previous" resname="plugin.easyshop_orderform.orderForm.previous">
+				<target>Vorheriger Schritt</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.complete" resname="plugin.easyshop_orderform.orderForm.complete">
+				<target>Bestellung abschließen</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.step1" resname="plugin.easyshop_orderform.orderForm.step1">
+				<target>Schritt 1/3: Alternative Lieferadresse</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.step1.description" resname="plugin.easyshop_orderform.orderForm.step1.description">
+				<target>Sollte die Lieferadresse vom PayPal-Konto abweichen, geben Sie bitte unten die alternative Adresse ein oder lassen Sie das Formular leer.</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.step2" resname="plugin.easyshop_orderform.orderForm.step2">
+				<target>Schritt 2/3: Bestätigen Sie Ihre Daten</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.step2.empty_info" resname="plugin.easyshop_orderform.orderForm.step2.empty_info">
+				<target>Wir versenden die Ware an die Lieferadresse Ihres PayPal-Kontos.</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.orderForm.step3" resname="plugin.easyshop_orderform.orderForm.step3">
+				<target>Schritt 3/3: Bezahlmethode</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.lastname" resname="plugin.easyshop_orderform.lastname">
+				<target>Nachname</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.firstname" resname="plugin.easyshop_orderform.firstname">
+				<target>Vorname</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.street" resname="plugin.easyshop_orderform.street">
+				<target>Straße</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.postcode" resname="plugin.easyshop_orderform.postcode">
+				<target>PLZ</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.city" resname="plugin.easyshop_orderform.city">
+				<target>Ort</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.country" resname="plugin.easyshop_orderform.country">
+				<target>Land</target>
+			</trans-unit>
+			<trans-unit id="plugin.easyshop_orderform.country.help" resname="plugin.easyshop_orderform.country.help">
+				<target>Wir liefern nur innerhalb Deutschlands</target>
 			</trans-unit>
 		</body>
 	</file>
