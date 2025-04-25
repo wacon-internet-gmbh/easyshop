@@ -282,7 +282,7 @@ class OrderForm
 
             if ($this->$propertyName instanceof AbstractEntity) {
                 $exportData[$propertyName] = $this->$propertyName->getUid();
-            } else if (!\is_object($this->$propertyName)) {
+            } elseif (!\is_object($this->$propertyName)) {
                 $exportData[$propertyName] = $this->$propertyName;
             }
         }
