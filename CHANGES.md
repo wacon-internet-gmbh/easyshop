@@ -1,3 +1,6 @@
+## Version dev-basket-0
+- [TASK] Add plugin for basket
+
 ## Version 1.4.0
 - [FEATURE] New process workflow with order form to set alternative delivery address
 

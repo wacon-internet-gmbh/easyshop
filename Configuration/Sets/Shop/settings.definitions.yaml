@@ -1,11 +1,19 @@
 categories:
   Easyshop:
     label: 'Easyshop'
+  Easyshop.settings:
+    label: 'Settings'
+    parent: Easyshop
   Easyshop.emails:
     label: 'Emails'
     parent: Easyshop
 
 settings:
+  Easyshop.settings.enableBasket:
+    label: 'Enable basket functionality'
+    category: Easyshop.settings
+    type: bool
+    default: false
   Easyshop.emails.orderContact:
     label: 'Email receiver for contact email of order mails'
     category: Easyshop.emails

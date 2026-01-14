@@ -1,0 +1,93 @@
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <f:asset.css identifier="easyshop-basket" href="EXT:easyshop/Resources/Public/Css/basket.css" />
+    <h1 class="text-center mb-5 shop-title">Dein Warenkorb</h1>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm p-4">
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                            <tr class="text-muted small text-uppercase">
+                                <th scope="col" class="border-0">Produkt</th>
+                                <th scope="col" class="border-0">Menge</th>
+                                <th scope="col" class="border-0 text-end">Preis</th>
+                                <th scope="col" class="border-0"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-4">
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://via.placeholder.com/80x100" alt="Leder-Shopper"
+                                            class="img-fluid rounded me-3" style="width: 80px;">
+                                        <div>
+                                            <h5 class="mb-0 product-name">Leder-Shopper "Elegance"</h5>
+                                            <small class="text-muted">Farbe: Cognac | Material: Bio-Leder</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control form-control-sm w-50" value="1" min="1">
+                                </td>
+                                <td class="text-end fw-bold">149,00 €</td>
+                                <td class="text-end">
+                                    <button class="btn btn-sm btn-outline-danger border-0">✕</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-4">
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://via.placeholder.com/80x100" alt="Clutch"
+                                            class="img-fluid rounded me-3" style="width: 80px;">
+                                        <div>
+                                            <h5 class="mb-0 product-name">Abend-Clutch "Midnight"</h5>
+                                            <small class="text-muted">Farbe: Dunkelblau | Bestickt</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <input type="number" class="form-control form-control-sm w-50" value="1" min="1">
+                                </td>
+                                <td class="text-end fw-bold">89,00 €</td>
+                                <td class="text-end">
+                                    <button class="btn btn-sm btn-outline-danger border-0">✕</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <a href="#" class="btn btn-link text-dark p-0 mt-3 text-decoration-none small">← Weiter einkaufen</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm p-4 summary-card">
+                <h3 class="h4 mb-4">Zusammenfassung</h3>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Zwischensumme</span>
+                    <span>238,00 €</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Versand</span>
+                    <span class="text-success">Gratis</span>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between mb-4">
+                    <span class="fw-bold">Gesamtsumme</span>
+                    <span class="fw-bold fs-4">238,00 €</span>
+                </div>
+                <button class="btn btn-dark w-100 py-3 rounded-pill checkout-btn">Zur Kasse gehen</button>
+
+                <div class="mt-4">
+                    <small class="text-muted">
+                        <p class="mb-1">✓ Inkl. MwSt.</p>
+                        <p class="mb-0">✓ Kostenlose Rückgabe innerhalb von 30 Tagen</p>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:section>

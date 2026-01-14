@@ -60,5 +60,11 @@ class TtContent extends Base
             'OrderForm',
             $this->getLLL('locallang_plugins.xlf:orderForm'),
         );
+
+        $pluginSignature = ExtensionUtility::registerPlugin(
+            $this->getExtensionKeyAsNamespace(),
+            'Basket',
+            $this->getLLL('locallang_plugins.xlf:basket'),
+        );
     }
 }

@@ -20,6 +20,10 @@
 			<trans-unit id="orderForm" resname="orderForm">
 				<source>Order Form</source>
 			</trans-unit>
+
+			<trans-unit id="basket" resname="basket">
+				<source>Basket</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

@@ -1,0 +1,42 @@
+.tx_easyshop .shop-title {
+    font-size: 2.5rem;
+    color: var(--bs-primary);
+}
+
+.tx_easyshop .product-name {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Karten und Layout */
+.tx_easyshop .card {
+    border-radius: 15px;
+}
+
+.tx_easyshop .summary-card {
+    background-color: var(--bs-light); /* Ein sanfter Beigeton */
+}
+
+/* Buttons */
+.tx_easyshop .checkout-btn {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tx_easyshop .checkout-btn:hover {
+    background-color: var(--bs-dark);
+    transform: translateY(-2px);
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .tx_easyshop .table-responsive {
+        border: 0;
+    }
+
+    .tx_easyshop .shop-title {
+        font-size: 2rem;
+    }
+}

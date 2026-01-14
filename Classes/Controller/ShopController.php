@@ -224,4 +224,36 @@ class ShopController extends BaseController
 
         return $this->htmlResponse();
     }
+
+    /**
+     * Show basket
+     * @return ResponseInterface
+     */
+    public function basketAction(): ResponseInterface
+    {
+        // $arguments = $this->getCartFromSession($this->request);
+        // $this->view->assign('cart', $arguments['cart'] ?? []);
+        return $this->htmlResponse();
+    }
+
+    /**
+     * Update basket
+     * @param Product $product
+     * @param int $quantity
+     * @return ResponseInterface
+     */
+    public function updateBasketAction(Product $product, int $quantity = 1): ResponseInterface
+    {
+        return $this->redirect('basket');
+    }
+
+    /**
+     * Remove product from basket
+     * @param Product $product
+     * @return ResponseInterface
+     */
+    public function removeFromBasketAction(Product $product): ResponseInterface
+    {
+        return $this->redirect('basket');
+    }
 }
