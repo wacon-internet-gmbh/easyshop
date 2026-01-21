@@ -12,9 +12,7 @@ Download and install the [extension][1] with the extension manager module.
 `composer req wacon/easyshop`
 
 ## 3 Todos
-- DB model
-- Template
-- PayPal Interface
+- Shop basket
 
 ## 4 Changelog
 see [CHANGES.md](CHANGES.md)

@@ -1,3 +1,7 @@
+## Version 1.5.0
+- [IMPORTANT] Stop TYPO3 12 support
+- [TASK] Move all TypoScript constants to site set
+
 ## Version 1.4.0
 - [FEATURE] New process workflow with order form to set alternative delivery address
 

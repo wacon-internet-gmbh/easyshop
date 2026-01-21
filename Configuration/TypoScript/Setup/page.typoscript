@@ -1,6 +1,6 @@
 pageEasyshopCheckout = PAGE
 pageEasyshopCheckout {
-  typeNum = 20240828
+  typeNum = {$Easyshop.pagetypes.order}
 
   config {
     disableAllHeaderCode = 1

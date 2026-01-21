@@ -2,34 +2,34 @@ plugin.tx_easyshop {
   view {
     templateRootPaths {
       0 = EXT:easyshop/Resources/Private/Templates/
-      1 = {$plugin.tx_easyshop.view.templateRootPath}
+      1 = {$Easyshop.templates.templateRootPath}
     }
     partialRootPaths {
       0 = EXT:easyshop/Resources/Private/Partials/
-      1 = {$plugin.tx_easyshop.view.partialRootPath}
+      1 = {$Easyshop.templates.partialRootPath}
     }
     layoutRootPaths {
       0 = EXT:easyshop/Resources/Private/Layouts/
-      1 = {$plugin.tx_easyshop.view.layoutRootPath}
+      1 = {$Easyshop.templates.layoutRootPath}
     }
   }
   settings {
     brand {
-      name = Easyshop
+      name = {$Easyshop.brand.name}
     }
     pageTypes {
-      order = 20240828
+      order = {$Easyshop.pagetypes.order}
     }
     gateways {
       paypal {
-        clientid =
-        environment = sandbox
-        secret =
+        clientid = {$Easyshop.gateways.paypal.clientid}
+        environment = {$Easyshop.gateways.paypal.mode}
+        secret = {$Easyshop.gateways.paypal.secret}
       }
     }
     pages {
-      checkout =
-      orderForm =
+      checkout = {$Easyshop.pages.checkout}
+      orderForm = {$Easyshop.pages.orderForm}
     }
     emails {
       orderConfirmation = {$Easyshop.emails.orderConfirmation}
