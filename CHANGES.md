@@ -1,6 +1,8 @@
 ## Version 1.5.0
 - [IMPORTANT] Stop TYPO3 12 support
 - [TASK] Move all TypoScript constants to site set
+- [TASK] Remove TYPO3 12 GitHub Action
+- [DOCS] Extend README.md with more information on how to install and configure the extension
 
 ## Version 1.4.0
 - [FEATURE] New process workflow with order form to set alternative delivery address
