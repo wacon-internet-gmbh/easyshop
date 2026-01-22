@@ -120,7 +120,7 @@ class Product extends Base
                         'default' => 'EUR',
                         'size' => 3,
                         'max' => 3,
-                        'min' => 3
+                        'min' => 3,
                     ],
                 ],
                 'categories' => [
@@ -143,9 +143,9 @@ class Product extends Base
                 'hidden' => $this->getHiddenPalette(),
                 'access' => $this->getAccessPalette(),
                 'prices' => [
-                    'showitem' => 'net_price,gross_price,vat,currency'
-                ]
-            ]
+                    'showitem' => 'net_price,gross_price,vat,currency',
+                ],
+            ],
         ];
 
         return $newProperties;
