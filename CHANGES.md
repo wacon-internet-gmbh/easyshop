@@ -1,3 +1,8 @@
+## dev-upgrade-typo314
+- [TASK] CHange TYPo3 version compatibility
+- [TASK] Migrate configurePlugin, registerPLugin
+- [TASK] Refactor PRoduct TCA
+
 ## Version 1.5.0
 - [IMPORTANT] Stop TYPO3 12 support
 - [TASK] Move all TypoScript constants to site set

@@ -9,6 +9,9 @@
 			<trans-unit id="tx_easyshop_domain_model_product.name" resname="tx_easyshop_domain_model_product.name">
 				<source>Name</source>
 			</trans-unit>
+			<trans-unit id="tx_easyshop_domain_model_product.images" resname="tx_easyshop_domain_model_product.images">
+				<source>Images</source>
+			</trans-unit>
 			<trans-unit id="tx_easyshop_domain_model_product.description" resname="tx_easyshop_domain_model_product.description">
 				<source>Description</source>
 			</trans-unit>

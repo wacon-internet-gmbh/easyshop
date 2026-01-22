@@ -45,6 +45,7 @@ class ExtLocalconf extends Base
             'ListWithDetail',
             [ProductController::class => 'listwithdetail,detail'],
             [],
+            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
         );
 
         ExtensionUtility::configurePlugin(
@@ -52,6 +53,7 @@ class ExtLocalconf extends Base
             'Checkout',
             [ShopController::class => 'checkout'],
             [],
+            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
         );
 
         ExtensionUtility::configurePlugin(
@@ -59,6 +61,7 @@ class ExtLocalconf extends Base
             'Order',
             [ShopController::class => 'order'],
             [],
+            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
         );
 
         ExtensionUtility::configurePlugin(
@@ -70,6 +73,7 @@ class ExtLocalconf extends Base
             [
                 ShopController::class => 'orderForm,orderFormOverview,orderFormCheckout',
             ],
+            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
         );
     }
 }

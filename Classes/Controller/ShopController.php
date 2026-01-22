@@ -179,7 +179,7 @@ class ShopController extends BaseController
      * @param \Wacon\Easyshop\Domain\Model\OrderForm $orderForm
      * @return ResponseInterface
      */
-    public function orderFormAction(Product $product, OrderForm $orderForm = null): ResponseInterface
+    public function orderFormAction(Product $product, ?OrderForm $orderForm = null): ResponseInterface
     {
         if (!$orderForm) {
             $orderForm = GeneralUtility::makeInstance(OrderForm::class);

@@ -568,4 +568,23 @@ trait TcaTrait
 
         return $default;
     }
+
+    /**
+     * Summary of getHiddenPalette
+     * @return array
+     */
+    public function getHiddenPalette(): array
+    {
+        return $GLOBALS['TCA']['tt_content']['palettes']['hidden'] ?? [
+            'showitem' => 'hidden;frontend.db.tt_content:hidden',
+        ];
+    }
+
+    public function getAccessPalette(): array
+    {
+        return $GLOBALS['TCA']['tt_content']['palettes']['access'] ?? [
+            'label' => 'core.form.palettes:access',
+            'showitem' => 'starttime;core.db.general:starttime, endtime;core.db.general:endtime, --linebreak--, fe_group;core.db.general:fe_group, --linebreak--, editlock',
+        ];
+    }
 }
