@@ -1,3 +1,6 @@
+### Version 1.5.1
+- [SECURITY] Update swiper due security fix
+
 ## Version 1.5.0
 - [IMPORTANT] Stop TYPO3 12 support
 - [TASK] Move all TypoScript constants to site set

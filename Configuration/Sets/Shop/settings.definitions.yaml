@@ -57,7 +57,7 @@ settings:
   Easyshop.pagetypes.order:
     label: 'Page type for checkout page'
     category: Easyshop.pagetypes
-    type: integer
+    type: int
     default: 20240828
   Easyshop.gateways.paypal.mode:
     label: 'PayPal mode'
