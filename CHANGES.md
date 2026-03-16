@@ -1,4 +1,8 @@
-## dev-upgrade-typo314
+## dev-upgrade-typo314-1
+- [TASK] Add Upgrade wizard to migrate old list_type plugins
+- [TASK] Disable parallel config for php cs fixer
+
+## dev-upgrade-typo314-0
 - [TASK] CHange TYPo3 version compatibility
 - [TASK] Migrate configurePlugin, registerPLugin
 - [TASK] Refactor PRoduct TCA
